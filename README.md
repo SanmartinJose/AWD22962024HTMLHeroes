@@ -16,6 +16,8 @@ Authors:
     -Micaela Salcedo
     -Jose Sanmartin
     -Matias Suarez
+    -Justin Villarroel
+
 
 Instructor: Edison Lascano
 
@@ -45,6 +47,8 @@ node index.js
     jmsanmartin@espe.edu.ec
     -Matias Suarez
     Masuarez18@espe.edu.ec
+    -Justin Villarroel
+    jjvillarroel1@espe.edu.ec
 
 V0.1
 
