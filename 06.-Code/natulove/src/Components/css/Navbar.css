@@ -1,0 +1,89 @@
+/* Estilo general para el navbar */
+.navbar {
+    background-color: #FDF6E3; /* Color claro de fondo */
+    border-bottom: 2px solid #A0522D; /* Límite inferior con tono marrón */
+  }
+  
+  .navbar-brand {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #A0522D; /* Marrón */
+  }
+  
+  .navbar-brand img {
+    height: 50px; /* Tamaño del logo */
+    margin-right: 10px; /* Espaciado entre logo y texto */
+  }
+  
+  .nav-link {
+    color: #6A5ACD; /* Color púrpura */
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .nav-link:hover {
+    color: #D2691E; /* Marrón claro al pasar el cursor */
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .dropdown-menu {
+    background-color: #FDF6E3;
+    border: 1px solid #A0522D;
+  }
+  
+  .dropdown-item {
+    color: #6A5ACD;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #D2691E;
+    color: #FFFFFF;
+  }
+/* Estilo general para el navbar */
+.navbar {
+    background-color: #FDF6E3; /* Color claro de fondo */
+    border-bottom: 2px solid #A0522D; /* Límite inferior con tono marrón */
+  }
+  
+  .navbar-brand {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #A0522D; /* Marrón */
+  }
+  
+  .navbar-brand img {
+    height: 50px; /* Tamaño del logo */
+    margin-right: 10px; /* Espaciado entre logo y texto */
+  }
+  
+  .nav-link {
+    color: #6A5ACD; /* Color púrpura */
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .nav-link:hover {
+    color: #D2691E; /* Marrón claro al pasar el cursor */
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .dropdown-menu {
+    background-color: #FDF6E3;
+    border: 1px solid #A0522D;
+  }
+  
+  .dropdown-item {
+    color: #6A5ACD;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #D2691E;
+    color: #FFFFFF;
+  }
+    
