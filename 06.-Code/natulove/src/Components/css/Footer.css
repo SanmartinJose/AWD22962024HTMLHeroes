@@ -1,0 +1,41 @@
+/* Estilo para el Footer */
+.footer {
+    background-color: #4e342e; /* Marrón similar al logo */
+    color: #f5f5f5; /* Texto claro */
+  }
+  
+  .footer-logo {
+    width: 80px; /* Tamaño del logo */
+  }
+  
+  .footer a.footer-link {
+    color: #d7a977; /* Dorado cálido inspirado en el logo */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer a.footer-link:hover {
+    color: #ffffff; /* Cambia a blanco al pasar el mouse */
+  }
+  
+  .footer h5 {
+    color: #ffcc80; /* Color cálido y llamativo */
+  }
+  
+  .footer ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .footer ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer ul li a {
+    font-size: 0.9rem;
+  }
+  
+  .footer small {
+    color: #bdbdbd; /* Gris claro */
+  }
+  
