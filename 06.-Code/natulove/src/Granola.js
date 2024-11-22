@@ -1,17 +1,16 @@
 import React from 'react';
-import Carousel from './Components/Carousel';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
-
-// Componente HomePage
-const HomePage = () => {
+import GranolaDescription from './Components/GranolaDescription';
+// Componente Granola
+const Granola = () => {
   return (
     <>
       <Navbar />
-      <Carousel />
+      <GranolaDescription />
       <Footer />
     </>
   );
 };
 
-export default HomePage;
+export default Granola;
