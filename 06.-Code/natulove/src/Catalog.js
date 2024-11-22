@@ -3,14 +3,13 @@ import Carousel from './Components/Carousel';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 // Componente HomePage
-const HomePage = () => {
+const Catalog = () => {
   return (
     <>
       <Navbar />
-      <Carousel />
       <Footer />
     </>
   );
 };
 
-export default HomePage;
+export default Catalog;

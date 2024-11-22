@@ -4,7 +4,7 @@ import './css/Footer.css';
 // Footer 
 const Footer = () => {
     return (
-      <footer className="footer bg-dark text-light py-4">
+      <footer className="footer bg-black text-light py-4">
         <div className="container">
           <div className="row">
             {/* Logo Section */}
