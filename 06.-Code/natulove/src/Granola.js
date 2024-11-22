@@ -1,17 +1,16 @@
 import React from 'react';
-import Carousel from './Components/Carousel';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
-import Logo from './Components/Logo';
-// Componente HomePage
-const Catalog = () => {
+import GranolaDescription from './Components/GranolaDescription';
+// Componente Granola
+const Granola = () => {
   return (
     <>
-      <Logo />
       <Navbar />
+      <GranolaDescription />
       <Footer />
     </>
   );
 };
 
-export default Catalog;
+export default Granola;

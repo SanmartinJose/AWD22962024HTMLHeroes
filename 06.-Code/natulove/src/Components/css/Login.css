@@ -1,0 +1,82 @@
+/* Fondo general con degradado */
+.loginBackground {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f9f9f9, #d5e8d4);
+    padding: 20px;
+}
+
+/* Estilo del contenedor del formulario */
+.loginContainer {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(19, 1, 1, 0.395);
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid #66a867;
+}
+
+/* Título del formulario */
+.loginContainer h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #27d143;
+    font-weight: bold;
+}
+
+/* Estilo de las etiquetas */
+.loginContainer label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Estilo de los campos de entrada */
+.loginContainer input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.loginContainer input:focus {
+    border-color: #66a867;
+    box-shadow: 0 0 8px rgba(102, 168, 103, 0.4);
+    outline: none;
+}
+
+/* Estilo del botón de inicio de sesión */
+.loginButton {
+    background-color: #66a867;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+}
+
+.loginButton:hover {
+    background-color: #5a925c;
+    transform: scale(1.02);
+}
+
+/* Animación del botón al hacer clic */
+.loginButton:active {
+    transform: scale(0.98);
+}
+

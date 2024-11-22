@@ -1,17 +1,16 @@
 import React from 'react';
-import Carousel from './Components/Carousel';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
-import Logo from './Components/Logo';
-// Componente HomePage
-const Catalog = () => {
+import FlowerDescription from './Components/FlowerDescription';
+// Componente Eternal Flower
+const EternalFlower = () => {
   return (
     <>
-      <Logo />
       <Navbar />
+      <FlowerDescription />
       <Footer />
     </>
   );
 };
 
-export default Catalog;
+export default EternalFlower;
