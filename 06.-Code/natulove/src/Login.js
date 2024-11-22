@@ -6,7 +6,7 @@ import LoginBody from './Components/LoginBody';
 const Login = () => {
   return (
     <>
-      <Navbar />
+      
       <LoginBody />
       <Footer />
     </>

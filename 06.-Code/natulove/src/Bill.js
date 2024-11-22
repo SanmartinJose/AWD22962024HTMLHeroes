@@ -6,7 +6,7 @@ import BillPayment from './Components/BillPayment'
 const Bill = () => {
   return (
     <>
-      <Navbar />
+      
       <BillPayment />
       <Footer />
     </>

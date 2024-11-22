@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     
       <div className="container-fluid">
-        <center>  <img src="/img/logo.png" alt="Natulove Logo" className="logo" width="100px"  />  </center>
+        <center>  <img src="/img/logo1.png" alt="Natulove Logo" className="logo" width="450px"  />  </center>
       </div>
    
   );

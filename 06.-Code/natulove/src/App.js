@@ -7,7 +7,7 @@ import Cart from './Cart';
 import Bill from './Bill';
 function App() {
   return (
-    <Catalog />
+    <HomePage />
    
   );
 }
