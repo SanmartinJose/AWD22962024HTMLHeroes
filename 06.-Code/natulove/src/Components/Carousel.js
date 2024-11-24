@@ -7,7 +7,7 @@ const Carousel = () => {
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/img/products.jpg" class="d-block w-100" alt="..."/>
+      <img src="/img/products.jpg" class="d-block w-100" width="350px" alt="..."/>
     </div>
     <div class="carousel-item">
       <img src="/img/buyOnline.jpg" class="d-block w-100" alt="..."/>

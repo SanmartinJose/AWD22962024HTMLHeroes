@@ -5,6 +5,7 @@ import Catalog from './Catalog';
 import Footer from './Components/Footer';
 import Cart from './Cart';
 import Bill from './Bill';
+import Granola  from './Granola';
 function App() {
   return (
     <HomePage />

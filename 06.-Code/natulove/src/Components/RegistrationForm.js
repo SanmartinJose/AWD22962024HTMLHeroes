@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Modal } from 'react-bootstrap';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +13,8 @@ const RegistrationForm = () => {
     aceptaTerminos: false,
   });
 
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -21,18 +23,58 @@ const RegistrationForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const validateForm = () => {
+    const nombreRegex = /^[A-Za-zÑñ\s]+$/;
+    const telefonoRegex = /^[0-9]{10}$/;
+    const cedulaRegex = /^[0-9]{10}$/; // Asume que una cédula válida tiene 10 dígitos
+    const usuarioRegex = /^[A-Za-z0-9]+$/;
+    const contraseñaRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$.!%*?&]).{9,}$/; // Más de 8 caracteres
+    
+    if (!nombreRegex.test(formData.nombres)) {
+      alert('El nombre solo puede contener letras, espacios y la letra Ñ');
+      return false;
+    }
+  
+    if (!cedulaRegex.test(formData.cedula)) {
+      alert('La cédula debe contener exactamente 10 dígitos numéricos');
+      return false;
+    }
+  
+    if (!telefonoRegex.test(formData.telefono)) {
+      alert('El teléfono debe contener exactamente 10 dígitos');
+      return false;
+    }
+  
+    if (!usuarioRegex.test(formData.usuario)) {
+      alert('El usuario solo puede contener caracteres alfanuméricos');
+      return false;
+    }
+  
+    if (!contraseñaRegex.test(formData.contraseña)) {
+      alert(
+        'La contraseña debe tener más de 8 caracteres, incluyendo al menos una letra, un número y un carácter especial'
+      );
+      return false;
+    }
+  
     if (formData.contraseña !== formData.repetirContraseña) {
       alert('Las contraseñas no coinciden');
-      return;
+      return false;
     }
+  
     if (!formData.aceptaTerminos) {
       alert('Debe aceptar los términos y condiciones');
-      return;
+      return false;
     }
-    console.log('Datos enviados:', formData);
-    alert('Registro exitoso');
+  
+    return true;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setShowSuccessModal(true);
+    }
   };
 
   return (
@@ -145,6 +187,21 @@ const RegistrationForm = () => {
           Registrarse
         </Button>
       </Form>
+
+      {/* Modal de éxito */}
+      <Modal show={showSuccessModal} onHide={() => setShowSuccessModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Registro Exitoso</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>¡Su registro se ha realizado con éxito!</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="success" onClick={() => setShowSuccessModal(false)}>
+            Aceptar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
