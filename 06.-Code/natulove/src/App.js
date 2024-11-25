@@ -9,7 +9,7 @@ import ClientRegister from './ClientRegister';
 import Granola  from './Granola';
 function App() {
   return (
-    <ClientRegister />
+    <HomePage />
     
   );
 }

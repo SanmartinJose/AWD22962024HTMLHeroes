@@ -71,8 +71,8 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/action3">
-                    Something else here
+                  <Link className="dropdown-item" to="/ClientRegister">
+                    Client Register
                   </Link>
                 </li>
               </ul>
