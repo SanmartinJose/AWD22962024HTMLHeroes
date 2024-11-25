@@ -12,6 +12,7 @@ import Cart from './Cart';
 import Bill from './Bill';
 import ClientRegister from './ClientRegister';
 import Register from './Register';
+import EternalFlower from './EternalFlower';
 
 const HomePage = () => {
   return (
@@ -27,7 +28,7 @@ const HomePage = () => {
           <Route path="/Login" element={<Login />} />
           <Route path="/Bill" element={<Bill />} />
           <Route path="/Register" element={<Register />} />
-
+          <Route path="/EternalFlower" element={<EternalFlower />} />
         </Routes>
         <Carousel />
         <InformationNatuLove />
