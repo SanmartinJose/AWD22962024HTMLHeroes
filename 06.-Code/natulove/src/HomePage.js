@@ -10,6 +10,7 @@ import Catalog from './Catalog';
 import Login from './Login';
 import Cart from './Cart';
 import Bill from './Bill';
+import ClientRegister from './ClientRegister';
 import Register from './Register';
 
 const HomePage = () => {
@@ -22,9 +23,11 @@ const HomePage = () => {
           <Route path="/HomePage" element={<HomePage />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Catalog" element={<Catalog />} />
+          <Route path="/ClientRegister" element={<ClientRegister />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Bill" element={<Bill />} />
           <Route path="/Register" element={<Register />} />
+
         </Routes>
         <Carousel />
         <InformationNatuLove />
