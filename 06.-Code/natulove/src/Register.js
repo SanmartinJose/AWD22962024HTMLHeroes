@@ -8,7 +8,8 @@ const Granola = () => {
     <>
       
       <RegistrationForm />
-      <Footer />
+      <br/> 
+      <br/> 
     </>
   );
 };

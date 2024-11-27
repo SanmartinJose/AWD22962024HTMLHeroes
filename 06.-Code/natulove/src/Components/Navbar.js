@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
+    <div>
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <Link className="nav-link active" aria-current="page" to="/">
+        <Link className="nav-link active" aria-current="page" to="/IndexPage">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
@@ -40,7 +41,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/Cart">
+              <Link className="nav-link" to="/Cart"z>
                 Carrito de Compras
               </Link>
             </li>
@@ -80,7 +81,10 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+      
     </nav>
+<br/>
+</div>
   );
 };
 

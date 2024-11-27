@@ -17,7 +17,6 @@ const Catalog = () => {
           <Route path="/EnternalFlower" element={<EternalFlower />} />         
 
         </Routes>
-      <Footer />
     </>
   );
 };
