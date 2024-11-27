@@ -13,6 +13,7 @@ const RegistrationForm = () => {
     aceptaTerminos: false,
   });
 
+  const [errors, setErrors] = useState({});
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleChange = (e) => {
@@ -24,50 +25,44 @@ const RegistrationForm = () => {
   };
 
   const validateForm = () => {
+    const newErrors = {};
     const nombreRegex = /^[A-Za-zÑñ\s]+$/;
     const telefonoRegex = /^[0-9]{10}$/;
-    const cedulaRegex = /^[0-9]{10}$/; // Asume que una cédula válida tiene 10 dígitos
+    const cedulaRegex = /^[0-9]{10}$/;
     const usuarioRegex = /^[A-Za-z0-9]+$/;
-    const contraseñaRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$.!%*?&]).{9,}$/; // Más de 8 caracteres
-    
+    const contraseñaRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$.!%*?&]).{9,}$/;
+
     if (!nombreRegex.test(formData.nombres)) {
-      alert('El nombre solo puede contener letras, espacios y la letra Ñ');
-      return false;
+      newErrors.nombres = 'El nombre solo puede contener letras, espacios y la letra Ñ';
     }
-  
+
     if (!cedulaRegex.test(formData.cedula)) {
-      alert('La cédula debe contener exactamente 10 dígitos numéricos');
-      return false;
+      newErrors.cedula = 'La cédula debe contener exactamente 10 dígitos numéricos';
     }
-  
+
     if (!telefonoRegex.test(formData.telefono)) {
-      alert('El teléfono debe contener exactamente 10 dígitos');
-      return false;
+      newErrors.telefono = 'El teléfono debe contener exactamente 10 dígitos';
     }
-  
+
     if (!usuarioRegex.test(formData.usuario)) {
-      alert('El usuario solo puede contener caracteres alfanuméricos');
-      return false;
+      newErrors.usuario = 'El usuario solo puede contener caracteres alfanuméricos';
     }
-  
+
     if (!contraseñaRegex.test(formData.contraseña)) {
-      alert(
-        'La contraseña debe tener más de 8 caracteres, incluyendo al menos una letra, un número y un carácter especial'
-      );
-      return false;
+      newErrors.contraseña = 'La contraseña debe tener más de 8 caracteres, incluyendo al menos una letra, un número y un carácter especial';
     }
-  
+
     if (formData.contraseña !== formData.repetirContraseña) {
-      alert('Las contraseñas no coinciden');
-      return false;
+      newErrors.repetirContraseña = 'Las contraseñas no coinciden';
     }
-  
+
     if (!formData.aceptaTerminos) {
-      alert('Debe aceptar los términos y condiciones');
-      return false;
+      newErrors.aceptaTerminos = 'Debe aceptar los términos y condiciones';
     }
-  
-    return true;
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0; // Si no hay errores, el formulario es válido
   };
 
   const handleSubmit = (e) => {
@@ -89,8 +84,10 @@ const RegistrationForm = () => {
             placeholder="Ingrese sus nombres"
             value={formData.nombres}
             onChange={handleChange}
+            isInvalid={!!errors.nombres}
             required
           />
+          {errors.nombres && <div className="text-danger">{errors.nombres}</div>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formCedula">
@@ -101,8 +98,10 @@ const RegistrationForm = () => {
             placeholder="Ingrese su cédula"
             value={formData.cedula}
             onChange={handleChange}
+            isInvalid={!!errors.cedula}
             required
           />
+          {errors.cedula && <div className="text-danger">{errors.cedula}</div>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formTelefono">
@@ -113,8 +112,10 @@ const RegistrationForm = () => {
             placeholder="Ingrese su número de teléfono"
             value={formData.telefono}
             onChange={handleChange}
+            isInvalid={!!errors.telefono}
             required
           />
+          {errors.telefono && <div className="text-danger">{errors.telefono}</div>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formEmail">
@@ -137,8 +138,10 @@ const RegistrationForm = () => {
             placeholder="Ingrese un nombre de usuario"
             value={formData.usuario}
             onChange={handleChange}
+            isInvalid={!!errors.usuario}
             required
           />
+          {errors.usuario && <div className="text-danger">{errors.usuario}</div>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formContraseña">
@@ -149,8 +152,10 @@ const RegistrationForm = () => {
             placeholder="Ingrese una contraseña"
             value={formData.contraseña}
             onChange={handleChange}
+            isInvalid={!!errors.contraseña}
             required
           />
+          {errors.contraseña && <div className="text-danger">{errors.contraseña}</div>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formRepetirContraseña">
@@ -161,8 +166,10 @@ const RegistrationForm = () => {
             placeholder="Repita la contraseña"
             value={formData.repetirContraseña}
             onChange={handleChange}
+            isInvalid={!!errors.repetirContraseña}
             required
           />
+          {errors.repetirContraseña && <div className="text-danger">{errors.repetirContraseña}</div>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formTerminos">
@@ -179,8 +186,10 @@ const RegistrationForm = () => {
             }
             checked={formData.aceptaTerminos}
             onChange={handleChange}
+            isInvalid={!!errors.aceptaTerminos}
             required
           />
+          {errors.aceptaTerminos && <div className="text-danger">{errors.aceptaTerminos}</div>}
         </Form.Group>
 
         <Button variant="primary" type="submit" className="w-100">

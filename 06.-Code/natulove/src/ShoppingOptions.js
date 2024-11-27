@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ShoppingOptions = () => {
-  // Lista de productos para renderizar dinámicamente
+  // List of products to render dynamically
   const products = [
-    { img: "/img/pistacho.png", title: "Pistachios", price: "$4.50" },
-    { img: "/img/almonds.png", title: "Almonds", price: "$5.00" },
-    { img: "/img/paprika.png", title: "Paprika", price: "$2.50" },
-    { img: "/img/chocolates2.png", title: "Chocolates", price: "$6.50" },
-    { img: "/img/redroses.png", title: "Eternal Roses", price: "$10.50" },
-    { img: "/img/roses.png", title: "Box of Roses", price: "$15.00" },
+    { img: "/img/pistacho.png", title: "Pistachios", price: "$4.50", link: "/EternalFlower" },
+    { img: "/img/almonds.png", title: "Almonds", price: "$5.00", link: "/Granola" },
+    { img: "/img/paprika.png", title: "Paprika", price: "$2.50", link: "/Granola" },
+    { img: "/img/chocolates2.png", title: "Chocolates", price: "$6.50", link: "/Granola" },
+    { img: "/img/redroses.png", title: "Eternal Roses", price: "$10.50", link: "/EternalFlower" },
+    { img: "/img/granola3.jpg", title: "Granola", price: "$5.00", link: "/Granola" },
   ];
 
   return (
@@ -19,7 +19,7 @@ const ShoppingOptions = () => {
         {products.map((product, index) => (
           <div className="col" key={index}>
             <div className="card h-100">
-              {/* Imagen del producto */}
+              {/* Product Image */}
               <img
                 src={product.img}
                 className="card-img-top"
@@ -27,13 +27,11 @@ const ShoppingOptions = () => {
                 height="200px"
               />
               <div className="card-body d-flex flex-column">
-              
                 <h5 className="card-title">{product.title}</h5>
                 <p className="card-text">{product.price}</p>
-              
                 <div className="mt-auto d-flex justify-content-around">
                   <button className="btn btn-danger">Add to Cart</button>
-                  <Link className="btn btn-info" to="/EternalFlower">
+                  <Link className="btn btn-info" to={product.link}>
                     More Info
                   </Link>
                 </div>

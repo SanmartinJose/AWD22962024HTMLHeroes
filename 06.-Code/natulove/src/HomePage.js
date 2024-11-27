@@ -11,36 +11,31 @@ import ClientRegister from './ClientRegister';
 import Register from './Register';
 import EternalFlower from './EternalFlower';
 import IndexPage from './IndexPage';
+import NewProduct from './NewProduct';
+import Granola from './Granola';
 
 const HomePage = () => {
   return (
-    
     <>
-      <Logo />           
+      <Logo />
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/HomePage" element={<HomePage />} />
+          
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Catalog" element={<Catalog />} />
           <Route path="/ClientRegister" element={<ClientRegister />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Bill" element={<Bill />} />
-          <Route path="/Register" element={<Register />} />
+          <Route path="/Register" element={<Register />} />          
           <Route path="/EternalFlower" element={<EternalFlower />} />
-<<<<<<< HEAD
-        </Routes>        
-        </Router>
-        <Carousel />
-        <InformationNatuLove />
-        <ProductsIndex />
-=======
           <Route path="/IndexPage" element={<IndexPage />} />
+          <Route path="/NewProduct" element={<NewProduct />} />
+          <Route path="/Granola" element={<Granola/>} />   
         </Routes>
->>>>>>> 3e44e9025eb36fcd2e7e6eb46ab73276fa9632c4
         <Footer />
-        </>
-    
+      </Router>
+    </>
   );
 };
 
