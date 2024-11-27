@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="row">
             {/* Logo Section */}
             <div className="col-md-2 text-md-start">
-              <img src="/img/Logo.png" alt="Develop Team Logo" className="ffooter-logo mb-3 img-fluid w-50" />
+              <img src="/img/LogoTeam.png" alt="Develop Team Logo" className="ffooter-logo mb-3 img-fluid w-50" />
              
             </div>
             {/* Navigation Links */}

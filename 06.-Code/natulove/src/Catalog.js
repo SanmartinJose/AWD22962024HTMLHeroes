@@ -14,7 +14,7 @@ const Catalog = () => {
       
       <ShoppingOptions />
       <Routes>
-          <Route path="/EnternalFlower" element={<EternalFlower />} />          
+          <Route path="/EnternalFlower" element={<EternalFlower />} />         
 
         </Routes>
       <Footer />

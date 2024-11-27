@@ -27,10 +27,10 @@ const ShoppingOptions = () => {
                 height="200px"
               />
               <div className="card-body d-flex flex-column">
-                {/* Título y precio */}
+              
                 <h5 className="card-title">{product.title}</h5>
                 <p className="card-text">{product.price}</p>
-                {/* Botones: "Add to Cart" y "More Info" */}
+              
                 <div className="mt-auto d-flex justify-content-around">
                   <button className="btn btn-danger">Add to Cart</button>
                   <Link className="btn btn-info" to="/EternalFlower">

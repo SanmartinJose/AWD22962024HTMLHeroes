@@ -16,9 +16,10 @@ import EternalFlower from './EternalFlower';
 
 const HomePage = () => {
   return (
-    <Router>
-      <>
-        <Logo />
+    
+    <>
+      <Logo />           
+      <Router>
         <Navbar />
         <Routes>
           <Route path="/HomePage" element={<HomePage />} />
@@ -29,13 +30,14 @@ const HomePage = () => {
           <Route path="/Bill" element={<Bill />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/EternalFlower" element={<EternalFlower />} />
-        </Routes>
+        </Routes>        
+        </Router>
         <Carousel />
         <InformationNatuLove />
         <ProductsIndex />
         <Footer />
-      </>
-    </Router>
+        </>
+    
   );
 };
 
