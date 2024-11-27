@@ -1,11 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Carousel from './Components/Carousel';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Logo from './Components/Logo';
-import InformationNatuLove from './Components/InformationNatuLove';
-import ProductsIndex from './Components/ProductsIndex';
 import Catalog from './Catalog';
 import Login from './Login';
 import Cart from './Cart';
@@ -13,6 +10,7 @@ import Bill from './Bill';
 import ClientRegister from './ClientRegister';
 import Register from './Register';
 import EternalFlower from './EternalFlower';
+import IndexPage from './IndexPage';
 
 const HomePage = () => {
   return (
@@ -29,10 +27,8 @@ const HomePage = () => {
           <Route path="/Bill" element={<Bill />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/EternalFlower" element={<EternalFlower />} />
+          <Route path="/IndexPage" element={<IndexPage />} />
         </Routes>
-        <Carousel />
-        <InformationNatuLove />
-        <ProductsIndex />
         <Footer />
       </>
     </Router>

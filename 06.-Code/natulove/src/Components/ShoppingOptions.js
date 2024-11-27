@@ -10,6 +10,7 @@ const ShoppingOptions = () => {
     { img: "/img/chocolates2.png", title: "Chocolates", price: "$6.50" },
     { img: "/img/redroses.png", title: "Eternal Roses", price: "$10.50" },
     { img: "/img/roses.png", title: "Box of Roses", price: "$15.00" },
+    
   ];
 
   return (

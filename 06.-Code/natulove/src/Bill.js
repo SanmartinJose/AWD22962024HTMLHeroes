@@ -8,7 +8,8 @@ const Bill = () => {
     <>
       
       <BillPayment />
-      <Footer />
+     <br/> 
+     <br/> 
     </>
   )
 }

@@ -11,7 +11,8 @@ const Cart = () => {
       <center><h1 class="card title">Carrito de Compras</h1>
       <ProductsCart />
       <button class="btn btn-primary btn-green">Pagar</button></center>
-      <Footer />
+      
+      
     </>
   );
 };
