@@ -11,28 +11,28 @@
     <!-- Contenido Principal -->
     <main class="main-content">
         <?php
-        $mainImage = "../imagenes/flower1.jpeg";
+        $mainImage = "../imagenes/granola2.jpg";
         $thumbnails = [
-            ["src" => "../imagenes/flower1.jpeg", "alt" => "miniature 1"],
-            ["src" => "../imagenes/flower2.jpeg", "alt" => "miniature 2"],
-            ["src" => "../imagenes/flower4.jpeg", "alt" => "miniature 3"],
-            ["src" => "../imagenes/flower5.jpeg", "alt" => "miniature 4"],
-            ["src" => "../imagenes/flower6.jpg", "alt" => "miniature 5"]
+            ["src" => "../imagenes/granola2.jpg", "alt" => "miniature 1"],
+            ["src" => "../imagenes/pistacho.png", "alt" => "miniature 2"],
+            ["src" => "../imagenes/pistacho2.jpg", "alt" => "miniature 3"],
+            ["src" => "../imagenes/pistacho3.jpg", "alt" => "miniature 4"],
+            ["src" => "../imagenes/pistacho4.jpg", "alt" => "miniature 5"]
         ];
-        $price = "$9.99";
-        $rating = "4.8 ★★★★★";
-        $stock = 15;
-        $location = "Conocoto";
+        $price = "$5.50";
+        $rating = "4.7 ★★★★★";
+        $stock = 12;
+        $location = "Sangolqui";
         $comments = [
-            ["user" => "User1", "comment" => "¡Este es un producto increíble!"],
-            ["user" => "User2", "comment" => "Lo recomiendo altamente."]
+            ["user" => "User1", "comment" => "¡Este es un producto es my bueno!"],
+            ["user" => "User2", "comment" => "Compre 2 son tan ricos"]
         ];
         ?>
 
         <div class="productContainer">
             <!-- Galería de imágenes -->
             <div class="productGallery">
-                <img src="<?php echo $mainImage; ?>" alt="Eternal flower gift" class="mainImage">
+                <img src="<?php echo $mainImage; ?>" alt="Pistacho" class="mainImage">
                 <div class="thumbnailGallery">
                     <?php foreach ($thumbnails as $thumbnail): ?>
                         <img 
@@ -47,24 +47,25 @@
 
             <!-- Detalles del producto -->
             <div class="productDetails">
-                <h1>Regalo natural flor eterna - Amor eterno</h1>
+                <h1>Pistachos - Alimento sano</h1>
                 <p class="price"><?php echo $price; ?></p>
                 <p class="rating"><?php echo $rating; ?></p>
                 <p class="description">
-                    La flor eterna es una pieza única y encantadora que captura la belleza natural 
-                    de las flores en su forma más duradera. Con un proceso especial de preservación, 
-                    esta flor mantiene su frescura y color durante años, sin necesidad de agua ni 
-                    cuidados especiales. Ideal para decorar tu hogar o regalar a alguien especial, 
-                    la flor eterna simboliza la belleza perdurable y la eternidad de los momentos 
-                    más preciados. Perfecta para quienes buscan un toque natural y elegante que 
-                    perdure en el tiempo.
+                Nuestros pistachos naturales son una opción deliciosa y nutritiva, ricos en grasas 
+                saludables, proteínas y fibra. Este fruto seco, cuidadosamente seleccionado y sin 
+                aditivos ni conservantes, es perfecto para quienes buscan un snack energético y lleno 
+                de beneficios para la salud. Los pistachos son una excelente fuente de antioxidantes 
+                y nutrientes esenciales, ayudando a mejorar la salud del corazón y la función cerebral.
+                 Además, su sabor suave y ligeramente tostado los convierte en una excelente opción 
+                 para acompañar ensaladas, yogur o disfrutar directamente del paquete. Sin lugar a 
+                 dudas, una elección natural y deliciosa para mantenerte energizado a lo largo del día.
                 </p>
                 <div class="availability">
                     <p>Disponibles: <span class="status"><?php echo $stock; ?> stock</span></p>
                 </div>
                 <div class="deliveryOptions">
                     <p>Entregar a <strong><?php echo $location; ?></strong></p>
-                    <p>No se puede entregar a la ubicación seleccionada...</p>
+                    <p>Lugar permitido para la entrga...</p>
                 </div>
                 <button class="addToCart">Agregar al Carrito</button>
             </div>

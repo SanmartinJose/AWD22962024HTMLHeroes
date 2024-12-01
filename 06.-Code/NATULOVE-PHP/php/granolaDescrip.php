@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descripción del Producto - Flor Eterna</title>
     <link rel="stylesheet" href="../../NATULOVE-PHP/css/ProductDescription.css">
-    <link rel="stylesheet" href="../NATULOVE/css/Footer.css">
+    <link rel="stylesheet" href="../../NATULOVE-PHP/css/Footer.css">
 </head>
 <body>
     <!-- Contenido Principal -->
@@ -32,7 +32,7 @@
         <div class="productContainer">
             <!-- Galería de imágenes -->
             <div class="productGallery">
-                <img src="<?php echo $mainImage; ?>" alt="Eternal flower gift" class="mainImage">
+                <img src="<?php echo $mainImage; ?>" alt="Granola" class="mainImage">
                 <div class="thumbnailGallery">
                     <?php foreach ($thumbnails as $thumbnail): ?>
                         <img 
@@ -84,7 +84,7 @@
     </main>
 
 <!-- Incluir el Footer -->
-<?php include 'php/footer.php'; ?>
+<?php include 'footer.php'; ?>
 
 </body>
 </html>

@@ -11,28 +11,28 @@
     <!-- Contenido Principal -->
     <main class="main-content">
         <?php
-        $mainImage = "../imagenes/flower1.jpeg";
+        $mainImage = "../imagenes/almonds.png";
         $thumbnails = [
-            ["src" => "../imagenes/flower1.jpeg", "alt" => "miniature 1"],
-            ["src" => "../imagenes/flower2.jpeg", "alt" => "miniature 2"],
-            ["src" => "../imagenes/flower4.jpeg", "alt" => "miniature 3"],
-            ["src" => "../imagenes/flower5.jpeg", "alt" => "miniature 4"],
-            ["src" => "../imagenes/flower6.jpg", "alt" => "miniature 5"]
+            ["src" => "../imagenes/almonds.png", "alt" => "miniature 1"],
+            ["src" => "../imagenes/almonds2.jpg", "alt" => "miniature 2"],
+            ["src" => "../imagenes/almonds3.png", "alt" => "miniature 3"],
+            ["src" => "../imagenes/almonds4.jpg", "alt" => "miniature 4"],
+            ["src" => "../imagenes/almonds5.jpg", "alt" => "miniature 5"]
         ];
-        $price = "$9.99";
-        $rating = "4.8 ★★★★★";
-        $stock = 15;
-        $location = "Conocoto";
+        $price = "$4.99";
+        $rating = "4.5 ★★★★";
+        $stock = 30;
+        $location = "Sangolqui";
         $comments = [
-            ["user" => "User1", "comment" => "¡Este es un producto increíble!"],
-            ["user" => "User2", "comment" => "Lo recomiendo altamente."]
+            ["user" => "User1", "comment" => "¡Un buen producto!"],
+            ["user" => "User2", "comment" => "Estaban ricas pero no tanto"]
         ];
         ?>
 
         <div class="productContainer">
             <!-- Galería de imágenes -->
             <div class="productGallery">
-                <img src="<?php echo $mainImage; ?>" alt="Eternal flower gift" class="mainImage">
+                <img src="<?php echo $mainImage; ?>" alt="Almendras" class="mainImage">
                 <div class="thumbnailGallery">
                     <?php foreach ($thumbnails as $thumbnail): ?>
                         <img 
@@ -47,24 +47,25 @@
 
             <!-- Detalles del producto -->
             <div class="productDetails">
-                <h1>Regalo natural flor eterna - Amor eterno</h1>
+                <h1>Almendras - Alimento nutritivo</h1>
                 <p class="price"><?php echo $price; ?></p>
                 <p class="rating"><?php echo $rating; ?></p>
                 <p class="description">
-                    La flor eterna es una pieza única y encantadora que captura la belleza natural 
-                    de las flores en su forma más duradera. Con un proceso especial de preservación, 
-                    esta flor mantiene su frescura y color durante años, sin necesidad de agua ni 
-                    cuidados especiales. Ideal para decorar tu hogar o regalar a alguien especial, 
-                    la flor eterna simboliza la belleza perdurable y la eternidad de los momentos 
-                    más preciados. Perfecta para quienes buscan un toque natural y elegante que 
-                    perdure en el tiempo.
+                Nuestras almendras naturales son un snack saludable y lleno de energía, 
+                ideales para quienes buscan una opción nutritiva y deliciosa. Ricas en 
+                grasas saludables, proteínas, fibra y antioxidantes, son perfectas para 
+                apoyar una dieta balanceada. Además, las almendras son conocidas por sus 
+                beneficios para la salud del corazón y el control de los niveles de azúcar 
+                en sangre. Sin aditivos ni conservantes, se presentan en su forma más pura 
+                para que disfrutes de todo su sabor y propiedades. Son ideales para agregar 
+                a batidos, ensaladas, yogur o simplemente disfrutar como un tentempié saludable.
                 </p>
                 <div class="availability">
                     <p>Disponibles: <span class="status"><?php echo $stock; ?> stock</span></p>
                 </div>
                 <div class="deliveryOptions">
                     <p>Entregar a <strong><?php echo $location; ?></strong></p>
-                    <p>No se puede entregar a la ubicación seleccionada...</p>
+                    <p>Lugar permitido para la entrga...</p>
                 </div>
                 <button class="addToCart">Agregar al Carrito</button>
             </div>
