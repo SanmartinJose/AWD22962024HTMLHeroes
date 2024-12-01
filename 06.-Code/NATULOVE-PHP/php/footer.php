@@ -1,6 +1,3 @@
-<?php
-// Footer.php
-?>
 
 <footer class="footer bg-black text-light py-4">
     <div class="container">
