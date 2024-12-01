@@ -6,7 +6,8 @@
   <title>NatuLove Products</title>
   <!-- Agregar Bootstrap para los estilos -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/"> <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="css/Catalog.css">
+  <link rel="stylesheet" href="../NATULOVE-PHP/css/Footer.css">
 </head>
 <body>
   <div class="container my-5">
@@ -14,12 +15,12 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <?php
         $products = [
-          ["img" => "/img/pistacho.png", "title" => "Pistachios", "price" => "$4.50", "link" => "/EternalFlower"],
-          ["img" => "/img/almonds.png", "title" => "Almonds", "price" => "$5.00", "link" => "/Granola"],
-          ["img" => "/img/paprika.png", "title" => "Paprika", "price" => "$2.50", "link" => "/Granola"],
-          ["img" => "/img/chocolates2.png", "title" => "Chocolates", "price" => "$6.50", "link" => "/Granola"],
-          ["img" => "/img/redroses.png", "title" => "Eternal Roses", "price" => "$10.50", "link" => "/EternalFlower"],
-          ["img" => "/img/granola3.jpg", "title" => "Granola", "price" => "$5.00", "link" => "/Granola"],
+          ["img" => "imagenes/pistacho.png", "title" => "Pistachios", "price" => "$4.50", "link" => "php/pistachoDescrip.php"],
+          ["img" => "imagenes/almonds.png", "title" => "Almendras", "price" => "$4.99", "link" => "php/almondsDescrip.php"],
+          ["img" => "imagenes/paprika.png", "title" => "Paprika", "price" => "$2.50", "link" => "php/paprikaDescrip.php"],
+          ["img" => "imagenes/chocolates2.png", "title" => "Chocolates", "price" => "$6.50", "link" => "php/chocolateDescrip.php"],
+          ["img" => "imagenes/redroses.png", "title" => "Rosa Eterna", "price" => "$9.99", "link" => "php/eternalFlower.php"],
+          ["img" => "imagenes/granola3.jpg", "title" => "Granola", "price" => "$5.99", "link" => "php/granolaDescrip.php"],
         ];
 
         foreach ($products as $product) {
@@ -46,6 +47,9 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Incluir el Footer -->
+<?php include 'php/footer.php'; ?>
 </body>
 </html>
 
