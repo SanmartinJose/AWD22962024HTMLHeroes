@@ -14,7 +14,7 @@
 <body>
 	<div>
 	<center>	
-	  <p><img src="../imagenes/logo1.png" width="791" height="112" alt=""/></p>
+	  <p><img src="../../NATULOVE-PHP/imagenes/logo1.png" width="791" height="112" alt=""/></p>
 	</center>
 	</div>
 		
@@ -26,17 +26,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
         <li class="nav-item">
-          <a class="nav-link d-flex align-items-center" href="index.php">
+          <a class="nav-link d-flex align-items-center" href="../../NATULOVE-PHP/index.php">
             <i class="bi bi-house-door fs-4"></i> 
           </a>
         </li>
         <li class="nav-item d-flex align-items-center">
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="almondsDescrip.php">¿Quiénes Somos?</a>
+          <a class="nav-link" href="../../NATULOVE-PHP/php/almondsDescrip.php">¿Quiénes Somos?</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="natuLove.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="../../NATULOVE-PHP/php/natuLove.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Catálogo
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 1050px;">
@@ -49,15 +49,15 @@
                 <a class="dropdown-item" href="#">Chocolate con maracuyá</a>
                 <a class="dropdown-item" href="#">Chocolate con almendras</a>
                 <a class="dropdown-item" href="#">Chocolate blanco</a>
-                <a class="dropdown-item" href="#">Mix chocolates</a>
+                <a class="dropdown-item" href="../../NATULOVE-PHP/php/chocolateDescrip.php">Mix chocolates</a>
               </div>
               <div>
-                <h6 class="dropdown-header">Dulces</h6>
+                <h6 class="dropdown-header">Dulces y regalos</h6>
                 <a class="dropdown-item" href="#">Gomitas de fresa</a>
                 <a class="dropdown-item" href="#">Gomitas de mora</a>
                 <a class="dropdown-item" href="#">Caramelos de jengibre y eucalipto</a>
                 <a class="dropdown-item" href="#">Caumales</a>
-                <a class="dropdown-item" href="#">Turrones</a>
+                <a class="dropdown-item" href="../../NATULOVE-PHP/php/eternalFlower.php">Flor eterna</a>
               </div>
               <div>
                 <h6 class="dropdown-header">Especias</h6>
@@ -66,17 +66,17 @@
                 <a class="dropdown-item" href="#">Ajo en polvo</a>
                 <a class="dropdown-item" href="#">Cebolla en polvo</a>
                 <a class="dropdown-item" href="#">Ají peruano</a>
-                <a class="dropdown-item" href="#">Ají en polvo</a>
+                <a class="dropdown-item" href="../../NATULOVE-PHP/php/paprikaDescrip.php">Paprika</a>
                 <a class="dropdown-item" href="#">Nuez moscada</a>
               </div>
               <div>
                 <h6 class="dropdown-header">Frutos Secos</h6>
-                <a class="dropdown-item" href="#">Nuez</a>
-                <a class="dropdown-item" href="#">Almendra</a>
+                <a class="dropdown-item" href="../../NATULOVE-PHP/php/granolaDescrip.php">Granola</a>
+                <a class="dropdown-item" href="../../NATULOVE-PHP/php/almondsDescrip.php">Almendra</a>
                 <a class="dropdown-item" href="#">Maní sin sal</a>
                 <a class="dropdown-item" href="#">Maní con sal</a>
                 <a class="dropdown-item" href="#">Pasas</a>
-                <a class="dropdown-item" href="#">Pistacho</a>
+                <a class="dropdown-item" href="../../NATULOVE-PHP/php/pistachoDescrip.php">Pistacho</a>
               </div>
               <div>
                 <h6 class="dropdown-header">Hojas Medicinales</h6>
@@ -84,6 +84,9 @@
                 <a class="dropdown-item" href="#">Moringa</a>
                 <a class="dropdown-item" href="#">Laurel</a>
                 <a class="dropdown-item" href="#">Zen</a>
+              </div>
+              <div>
+                <a class="dropdown-item" href="../../NATULOVE-PHP/php/catalogPro.php">General</a>
               </div>
             </div>
           </div>

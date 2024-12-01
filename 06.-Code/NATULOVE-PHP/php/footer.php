@@ -4,25 +4,25 @@
         <div class="row">
             <!-- Logo Section -->
             <div class="col-md-2">
-                <img src="../../NATULOVE/imagenes/LogoTeam.png" alt="Develop Team Logo" class="img-fluid" />
+                <img src="../../NATULOVE-PHP/imagenes/LogoTeam.png" alt="Develop Team Logo" class="img-fluid" />
             </div>
             <!-- Navigation Links -->
             <div class="col-md-3">
-                <h5 class="text-uppercase">Quick Links</h5>
+                <h5 class="text-uppercase">Enlaces</h5>
                 <ul class="list-unstyled">
-                    <li><a href="/" class="footer-link">Home</a></li>
-                    <li><a href="/about" class="footer-link">About Us</a></li>
-                    <li><a href="/products" class="footer-link">Products</a></li>
-                    <li><a href="/contact" class="footer-link">Contact</a></li>
+                    <li><a href="../../NATULOVE-PHP/index.php" class="footer-link">Inicio</a></li>
+                    <li><a href="/about" class="footer-link">¿Quiénes Somos?</a></li>
+                    <li><a href="../../NATULOVE-PHP/php/catalogPro.php" class="footer-link">Productos</a></li>
+                    <li><a href="/contact" class="footer-link">Contactos</a></li>
                 </ul>
             </div>
             <!-- Contact Info -->
             <div class="col-md-6">
-                <h5 class="text-uppercase">Contact Us</h5>
+                <h5 class="text-uppercase">Contacta con nosotros</h5>
                 <ul class="list-unstyled">
                     <li>Email: <a href="mailto:support@natulove.com" class="footer-link">support@natulove.com</a></li>
-                    <li>Phone: +593 992536817</li>
-                    <li>Address: San Carlos, Quito, Ecuador</li>
+                    <li>Telefono: +593 992536817</li>
+                    <li>Dirección: San Carlos, Quito, Ecuador</li>
                 </ul>
             </div>
         </div>

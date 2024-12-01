@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../NATULOVE-PHP/css/Footer.css">
 </head>
 <body>
+<?php include 'Navbar.php'; ?>
     <!-- Contenido Principal -->
     <main class="main-content">
         <?php

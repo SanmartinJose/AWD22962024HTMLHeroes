@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../NATULOVE-PHP/css/Footer.css">
 </head>
 <body>
+<?php include 'Navbar.php'; ?>
     <!-- Contenido Principal -->
     <main class="main-content">
         <?php
@@ -47,7 +48,7 @@
 
             <!-- Detalles del producto -->
             <div class="productDetails">
-                <h1>Chocolate natural - Gran sabor</h1>
+                <h1> Mix Chocolate - Gran sabor</h1>
                 <p class="price"><?php echo $price; ?></p>
                 <p class="rating"><?php echo $rating; ?></p>
                 <p class="description">
