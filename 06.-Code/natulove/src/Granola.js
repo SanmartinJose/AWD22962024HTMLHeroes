@@ -8,7 +8,7 @@ const Granola = () => {
     <>
       
       <GranolaDescription />
-      <Footer />
+
     </>
   );
 };
