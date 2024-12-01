@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descripción del Producto - Flor Eterna</title>
-    <link rel="stylesheet" href="css/ProductDescription.css">
+    <link rel="stylesheet" href="../../NATULOVE-PHP/css/ProductDescription.css">
     <link rel="stylesheet" href="../NATULOVE/css/Footer.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
             ["src" => "../imagenes/granola2.jpg", "alt" => "miniature 2"],
             ["src" => "../imagenes/granola3.jpg", "alt" => "miniature 3"],
             ["src" => "../imagenes/granola4.jpg", "alt" => "miniature 4"],
-            ["src" => "../imagenes/granola5.jpg", "alt" => "miniature 5"]
+            ["src" => "../imagenes/granola5.webp", "alt" => "miniature 5"]
         ];
         $price = "$5.99";
         $rating = "4.6 ★★★★";

@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const ProductsIndex = () => {
   return (
     <div class="container my-5">

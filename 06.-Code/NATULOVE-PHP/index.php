@@ -1,90 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descripción del Producto - Flor Eterna</title>
-    <link rel="stylesheet" href="css/ProductDescription.css">
-    <link rel="stylesheet" href="../NATULOVE/css/Footer.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NatuLove Products</title>
+  <!-- Agregar Bootstrap para los estilos -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/"> <!-- Estilos personalizados -->
 </head>
 <body>
-    <!-- Contenido Principal -->
-    <main class="main-content">
-        <?php
-        $mainImage = "imagenes/flower1.jpeg";
-        $thumbnails = [
-            ["src" => "imagenes/flower1.jpeg", "alt" => "miniature 1"],
-            ["src" => "imagenes/flower2.jpeg", "alt" => "miniature 2"],
-            ["src" => "imagenes/flower4.jpeg", "alt" => "miniature 3"],
-            ["src" => "imagenes/flower5.jpeg", "alt" => "miniature 4"],
-            ["src" => "imagenes/flower6.jpg", "alt" => "miniature 5"]
+  <div class="container my-5">
+    <h1 class="display-4 mb-3 text-danger">NatuLove Products Specialized in Love</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <?php
+        $products = [
+          ["img" => "/img/pistacho.png", "title" => "Pistachios", "price" => "$4.50", "link" => "/EternalFlower"],
+          ["img" => "/img/almonds.png", "title" => "Almonds", "price" => "$5.00", "link" => "/Granola"],
+          ["img" => "/img/paprika.png", "title" => "Paprika", "price" => "$2.50", "link" => "/Granola"],
+          ["img" => "/img/chocolates2.png", "title" => "Chocolates", "price" => "$6.50", "link" => "/Granola"],
+          ["img" => "/img/redroses.png", "title" => "Eternal Roses", "price" => "$10.50", "link" => "/EternalFlower"],
+          ["img" => "/img/granola3.jpg", "title" => "Granola", "price" => "$5.00", "link" => "/Granola"],
         ];
-        $price = "$9.99";
-        $rating = "4.8 ★★★★★";
-        $stock = 15;
-        $location = "Conocoto";
-        $comments = [
-            ["user" => "User1", "comment" => "¡Este es un producto increíble!"],
-            ["user" => "User2", "comment" => "Lo recomiendo altamente."]
-        ];
-        ?>
 
-        <div class="productContainer">
-            <!-- Galería de imágenes -->
-            <div class="productGallery">
-                <img src="<?php echo $mainImage; ?>" alt="Eternal flower gift" class="mainImage">
-                <div class="thumbnailGallery">
-                    <?php foreach ($thumbnails as $thumbnail): ?>
-                        <img 
-                            src="<?php echo $thumbnail['src']; ?>" 
-                            alt="<?php echo $thumbnail['alt']; ?>" 
-                            class="thumbnail"
-                            onclick="document.querySelector('.mainImage').src = '<?php echo $thumbnail['src']; ?>';"
-                        >
-                    <?php endforeach; ?>
+        foreach ($products as $product) {
+          echo '
+          <div class="col">
+            <div class="card h-100">
+              <img src="'.$product["img"].'" class="card-img-top" alt="'.$product["title"].'" height="200px">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">'.$product["title"].'</h5>
+                <p class="card-text">'.$product["price"].'</p>
+                <div class="mt-auto d-flex justify-content-around">
+                  <button class="btn btn-danger">Add to Cart</button>
+                  <a href="'.$product["link"].'" class="btn btn-info">More Info</a>
                 </div>
+              </div>
             </div>
-
-            <!-- Detalles del producto -->
-            <div class="productDetails">
-                <h1>Regalo natural flor eterna - Amor eterno</h1>
-                <p class="price"><?php echo $price; ?></p>
-                <p class="rating"><?php echo $rating; ?></p>
-                <p class="description">
-                    La flor eterna es una pieza única y encantadora que captura la belleza natural 
-                    de las flores en su forma más duradera. Con un proceso especial de preservación, 
-                    esta flor mantiene su frescura y color durante años, sin necesidad de agua ni 
-                    cuidados especiales. Ideal para decorar tu hogar o regalar a alguien especial, 
-                    la flor eterna simboliza la belleza perdurable y la eternidad de los momentos 
-                    más preciados. Perfecta para quienes buscan un toque natural y elegante que 
-                    perdure en el tiempo.
-                </p>
-                <div class="availability">
-                    <p>Disponibles: <span class="status"><?php echo $stock; ?> stock</span></p>
-                </div>
-                <div class="deliveryOptions">
-                    <p>Entregar a <strong><?php echo $location; ?></strong></p>
-                    <p>No se puede entregar a la ubicación seleccionada...</p>
-                </div>
-                <button class="addToCart">Agregar al Carrito</button>
-            </div>
-
-            <!-- Sección de comentarios -->
-            <section class="commentsSection">
-                <h3>Reseñas de Clientes</h3>
-                <div class="comments">
-                    <?php foreach ($comments as $comment): ?>
-                        <p><strong><?php echo $comment['user']; ?>:</strong> <?php echo $comment['comment']; ?></p>
-                    <?php endforeach; ?>
-                </div>
-                <textarea placeholder="Agrega tu comentario aquí..."></textarea>
-                <button class="addComment">Agregar Comentario</button>
-            </section>
-        </div>
-    </main>
-
-<!-- Incluir el Footer -->
-<?php include 'php/footer.php'; ?>
-
+          </div>
+          ';
+        }
+      ?>
+    </div>
+  </div>
+  <!-- Agregar scripts de Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
