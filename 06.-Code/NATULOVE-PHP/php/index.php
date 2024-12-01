@@ -59,9 +59,9 @@ include 'Navbar.php'; // Incluye el menú
       <div class="card">
         <img src="../imagenes/chocolateBag.jpg " class="card-img-top" alt="..." height="300px" /> 
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-warning">See more</a>
+          <h5 class="card-title">Pequeños detalles de Chocolates</h5>
+          <p class="card-text">Una selección de pequeños detalles sobre chocolates, destacando su sabor, textura y variedad.</p>
+          <a href="#" class="btn btn-warning">Ver mas</a>
         </div>
       </div>
     </div>
@@ -70,9 +70,9 @@ include 'Navbar.php'; // Incluye el menú
       <div class="card">
         <img src="../imagenes/flower2.jpeg"  class="card-img-top" alt="..." height="300px"/>
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-warning">See more</a>
+          <h5 class="card-title">Arreglos florales </h5>
+          <p class="card-text">Arreglos florales que combinan colores, formas y fragancias para crear composiciones únicas y llenas de belleza.</p>
+          <a href="#" class="btn btn-warning">Ver mas</a>
         </div>
       </div>
     </div>
@@ -81,9 +81,9 @@ include 'Navbar.php'; // Incluye el menú
       <div class="card">
         <img src="../imagenes/almonds2.jpg" class="card-img-top" alt="..." height="300px"/> 
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-warning">See more</a>
+          <h5 class="card-title">Frutos Secos</h5>
+          <p class="card-text">Variedad de frutos secos, ricos en nutrientes y perfectos para disfrutar como snacks o incorporarlos en diversas preparaciones.</p>
+          <a href="#" class="btn btn-warning">Ver mas</a>
         </div>
       </div>
     </div>
