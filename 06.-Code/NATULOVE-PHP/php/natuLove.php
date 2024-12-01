@@ -1,4 +1,4 @@
-<?php require_once 'php/Navbar.php' ?>
+<?php require_once 'Navbar.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -14,14 +14,13 @@
 <body>
 	<div>
 	<center>	
-	  <p><img src="../imagenes/logo1.png" width="893" height="151" alt=""/> </p>
-	  <p>&nbsp;</p>
+	  <p><img src="../imagenes/logo1.png" width="791" height="112" alt=""/></p>
 	</center>
-		
-		
 	</div>
 		
 		
+
+
 <nav class="navbar navbar-expand-lg bg-body border-bottom border-3 border-danger">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -32,24 +31,73 @@
           </a>
         </li>
         <li class="nav-item d-flex align-items-center">
-          <a class="nav-link" href="almondsDescrip.php">¿Quienes Somos?</a>
         </li>
-        <li class="nav-item dropdown d-flex align-items-center">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item">
+          <a class="nav-link" href="almondsDescrip.php">¿Quiénes Somos?</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="natuLove.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Catálogo
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/carpeta2/pagina2.php">Chocolates</a></li>
-            <li><a class="dropdown-item" href="#">Frutos Secos</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Regalos</a></li>
-          </ul>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 1050px;">
+            <div class="d-flex flex-wrap gap-4 p-3">
+              <div>
+                <h6 class="dropdown-header">Chocolates</h6>
+                <a class="dropdown-item" href="#">Chocolate con naranja</a>
+                <a class="dropdown-item" href="#">Chocolate con cereza</a>
+                <a class="dropdown-item" href="#">Chocolate semi amargo</a>
+                <a class="dropdown-item" href="#">Chocolate con maracuyá</a>
+                <a class="dropdown-item" href="#">Chocolate con almendras</a>
+                <a class="dropdown-item" href="#">Chocolate blanco</a>
+                <a class="dropdown-item" href="#">Mix chocolates</a>
+              </div>
+              <div>
+                <h6 class="dropdown-header">Dulces</h6>
+                <a class="dropdown-item" href="#">Gomitas de fresa</a>
+                <a class="dropdown-item" href="#">Gomitas de mora</a>
+                <a class="dropdown-item" href="#">Caramelos de jengibre y eucalipto</a>
+                <a class="dropdown-item" href="#">Caumales</a>
+                <a class="dropdown-item" href="#">Turrones</a>
+              </div>
+              <div>
+                <h6 class="dropdown-header">Especias</h6>
+                <a class="dropdown-item" href="#">Cúrcuma</a>
+                <a class="dropdown-item" href="#">Comino</a>
+                <a class="dropdown-item" href="#">Ajo en polvo</a>
+                <a class="dropdown-item" href="#">Cebolla en polvo</a>
+                <a class="dropdown-item" href="#">Ají peruano</a>
+                <a class="dropdown-item" href="#">Ají en polvo</a>
+                <a class="dropdown-item" href="#">Nuez moscada</a>
+              </div>
+              <div>
+                <h6 class="dropdown-header">Frutos Secos</h6>
+                <a class="dropdown-item" href="#">Nuez</a>
+                <a class="dropdown-item" href="#">Almendra</a>
+                <a class="dropdown-item" href="#">Maní sin sal</a>
+                <a class="dropdown-item" href="#">Maní con sal</a>
+                <a class="dropdown-item" href="#">Pasas</a>
+                <a class="dropdown-item" href="#">Pistacho</a>
+              </div>
+              <div>
+                <h6 class="dropdown-header">Hojas Medicinales</h6>
+                <a class="dropdown-item" href="#">Jinsen</a>
+                <a class="dropdown-item" href="#">Moringa</a>
+                <a class="dropdown-item" href="#">Laurel</a>
+                <a class="dropdown-item" href="#">Zen</a>
+              </div>
+            </div>
+          </div>
+        </li>
+		  <li class="nav-item">
+          <a class="nav-link" href="almondsDescrip.php">Ofertas</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
+
+</br>
 
 
 

@@ -1,7 +1,7 @@
 
 <?php
-$accesos = ['reportes', 'inventario'];
-include 'php/Navbar.php'; // Incluye el menú
+
+include 'Navbar.php'; // Incluye el menú
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,52 +10,97 @@ include 'php/Navbar.php'; // Incluye el menú
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NatuLove Products</title>
   <!-- Agregar Bootstrap para los estilos -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/Catalog.css">
-  <link rel="stylesheet" href="../NATULOVE-PHP/css/Footer.css" >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 <body>
-  <div class="container my-5">
-	    
-    <h1 class="display-4 mb-3 text-danger" >NatuLove Products Specialized in Love</h1>
-    <div class="row row-cols-1 row-cols-md-3 g-4" >
-      <?php
-        $products = [
-          ["img" => "imagenes/pistacho.png", "title" => "Pistachios", "price" => "$4.50", "link" => "php/pistachoDescrip.php"],
-          ["img" => "imagenes/almonds.png", "title" => "Almendras", "price" => "$4.99", "link" => "php/almondsDescrip.php"],
-          ["img" => "imagenes/paprika.png", "title" => "Paprika", "price" => "$2.50", "link" => "php/paprikaDescrip.php"],
-          ["img" => "imagenes/chocolates2.png", "title" => "Chocolates", "price" => "$6.50", "link" => "php/chocolateDescrip.php"],
-          ["img" => "imagenes/redroses.png", "title" => "Rosa Eterna", "price" => "$9.99", "link" => "php/eternalFlower.php"],
-          ["img" => "imagenes/granola3.jpg", "title" => "Granola", "price" => "$5.99", "link" => "php/granolaDescrip.php"],
-        ];
-
-        foreach ($products as $product) {
-          echo '
-          <div class="col">
-            <div class="card h-100">
-              <img src="'.$product["img"].'" class="card-img-top" alt="'.$product["title"].'" height="200px">
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title">'.$product["title"].'</h5>
-                <p class="card-text">'.$product["price"].'</p>
-                <div class="mt-auto d-flex justify-content-around">
-                  <button class="btn btn-danger">Add to Cart</button>
-                  <a href="'.$product["link"].'" class="btn btn-info">More Info</a>
-                </div>
-              </div>
-            </div>
+  
+      
+       <!-- Carousel -->
+      <div class="d-flex justify-content-center">
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <p><img src="../imagenes/roses2.png" class="d-block mx-auto" width="800" height="400" alt="Paprika Image"></p>
           </div>
-          ';
-        }
-      ?>
+          <div class="carousel-item">
+            <img src="../imagenes/product.jpg" class="d-block mx-auto" width="800" height="400" alt="Buy Online">
+          </div>
+          <div class="carousel-item">
+            <img src="../imagenes/almonds5.jpg" class="d-block mx-auto" width="800" height="400" alt="Chocolate Bag">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+<!-- quienes somos  -->
+    <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-12 text-center">
+        <h1 class="display-4 mb-3">Bienvenidos a NatuLove</h1>
+        <p class="lead">
+          Nourish your body and soul with nature. Our selection of nuts, seeds and artisanal chocolates is a source of energy, vitamins and minerals essential for your well-being. From strengthening your immune system to improving your concentration, our products will help you achieve your health goals. Customize your order and enjoy the benefits of a healthy and balanced diet with Natu Love.
+        </p>
+      </div>
     </div>
   </div>
+	
+	  <div class="container my-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card">
+        <img src="../imagenes/chocolateBag.jpg " class="card-img-top" alt="..." height="300px" /> 
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-warning">See more</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="../imagenes/flower2.jpeg"  class="card-img-top" alt="..." height="300px"/>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-warning">See more</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="../imagenes/almonds2.jpg" class="card-img-top" alt="..." height="300px"/> 
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-warning">See more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+	<?php include 'footer.php'; ?>
+	
+	
+	
+    
   <!-- Agregar scripts de Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Incluir el Footer -->
-<?php include 'php/footer.php'; ?>
+
 </body>
 </html>
 
