@@ -1,0 +1,76 @@
+/* Footer Styles */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 2rem 0;
+}
+
+.footer .container {
+    max-width: 1140px; /* Centrado y ancho fijo */
+    margin: 0 auto;
+}
+
+.footer .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.footer .col-md-2, 
+.footer .col-md-3, 
+.footer .col-md-6 {
+    flex: 1;
+    padding: 1rem;
+}
+
+.footer .col-md-2 {
+    text-align: center; /* Centrar logo */
+}
+
+.footer .text-uppercase {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer .footer-link {
+    color: #f8f9fa;
+    transition: color 0.2s ease-in-out;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.footer .footer-link:hover {
+    color: #00bcd4;
+    text-decoration: none;
+}
+
+.footer .img-fluid {
+    max-width: 40%; /* Ajustar tamaño del logo */
+    height: auto;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer ul li a {
+    text-decoration: none;
+}
+
+.footer small {
+    color: #6c757d;
+    font-size: 0.8rem;
+    text-align: center;
+    display: block;
+    margin-top: 2rem;
+}
