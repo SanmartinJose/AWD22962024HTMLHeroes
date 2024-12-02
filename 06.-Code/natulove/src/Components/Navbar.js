@@ -45,16 +45,6 @@ const Navbar = () => {
                 Carrito de Compras
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/NewProduct"z>
-                Agregar Producto
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/Bill">
-                Facturas
-              </Link>
-            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
