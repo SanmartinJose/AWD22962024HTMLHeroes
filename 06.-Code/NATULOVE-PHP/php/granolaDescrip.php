@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php include 'Navbar.php'; ?>
-    <!-- Contenido Principal -->
+
     <main class="main-content">
         <?php
         $mainImage = "../imagenes/granola1.jpg";
@@ -30,7 +30,7 @@
         ?>
 
         <div class="productContainer">
-            <!-- Galería de imágenes -->
+
             <div class="productGallery">
                 <img src="<?php echo $mainImage; ?>" alt="Granola" class="mainImage">
                 <div class="thumbnailGallery">
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <!-- Detalles del producto -->
+
             <div class="productDetails">
                 <h1>Granola organica - Alimento sano</h1>
                 <p class="price"><?php echo $price; ?></p>
@@ -69,7 +69,7 @@
                 <button class="addToCart">Agregar al Carrito</button>
             </div>
 
-            <!-- Sección de comentarios -->
+
             <section class="commentsSection">
                 <h3>Reseñas de Clientes</h3>
                 <div class="comments">
@@ -83,7 +83,7 @@
         </div>
     </main>
 
-<!-- Incluir el Footer -->
+
 <?php include 'footer.php'; ?>
 
 </body>

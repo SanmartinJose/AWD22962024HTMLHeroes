@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php include 'Navbar.php'; ?>
-    <!-- Contenido Principal -->
+
     <main class="main-content">
         <?php
         $mainImage = "../imagenes/flower1.jpeg";
@@ -31,7 +31,7 @@
         ?>
 
         <div class="productContainer">
-            <!-- Galería de imágenes -->
+
             <div class="productGallery">
                 <img src="<?php echo $mainImage; ?>" alt="Eternal flower gift" class="mainImage">
                 <div class="thumbnailGallery">
@@ -46,7 +46,6 @@
                 </div>
             </div>
 
-            <!-- Detalles del producto -->
             <div class="productDetails">
                 <h1>Regalo natural flor eterna - Amor eterno</h1>
                 <p class="price"><?php echo $price; ?></p>
@@ -70,7 +69,7 @@
                 <button class="addToCart">Agregar al Carrito</button>
             </div>
 
-            <!-- Sección de comentarios -->
+
             <section class="commentsSection">
                 <h3>Reseñas de Clientes</h3>
                 <div class="comments">
@@ -84,7 +83,7 @@
         </div>
     </main>
 
-<!-- Incluir el Footer -->
+
 <?php include 'footer.php'; ?>
 
 </body>

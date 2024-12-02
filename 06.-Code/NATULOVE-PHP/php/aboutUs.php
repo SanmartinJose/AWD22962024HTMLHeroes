@@ -16,7 +16,9 @@
                 <h1>Quiénes Somos</h1>
                 <p class="lead">Bienvenidos a NATULOVE, tu tienda de alimentos y decoraciones naturales.</p>
             </div>
+            <img src="../imagenes/granola2.jpg" alt="" />
         </div>
+
         <div class="row mt-4">
             <div class="col-md-6">
                 <h2>Nuestra Historia</h2>

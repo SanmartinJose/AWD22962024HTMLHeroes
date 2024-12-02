@@ -12,11 +12,11 @@
 <footer class="footer bg-black text-light py-4">
     <div class="container">
         <div class="row">
-            <!-- Logo Section -->
+
             <div class="col-md-2">
                 <img src="<?php echo $direction ?>imagenes/LogoTeam.png" alt="Develop Team Logo" class="img-fluid" />
             </div>
-            <!-- Navigation Links -->
+
             <div class="col-md-3">
                 <h5 class="text-uppercase">Enlaces</h5>
                 <ul class="list-unstyled">
@@ -26,7 +26,7 @@
                     <li><a href="#contact" class="footer-link">Contactos</a></li>
                 </ul>
             </div>
-            <!-- Contact Info -->
+   
             <div class="col-md-6">
                 <h5 class="text-uppercase">Contacta con nosotros</h5>
                 <ul class="list-unstyled">

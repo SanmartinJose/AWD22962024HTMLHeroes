@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NatuLove Products</title>
-  <!-- Agregar Bootstrap para los estilos -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -18,7 +18,7 @@
 <body>
 <?php include 'php/Navbar.php'; ?>
 
-       <!-- Carousel -->
+
       <div class="d-flex justify-content-center">
       <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -42,7 +42,7 @@
         </button>
       </div>
     </div>
-<!-- quienes somos  -->
+
     <div class="container my-5">
     <div class="row justify-content-center">
       <div class="col-md-12 text-center">
