@@ -1,7 +1,7 @@
 <?php
 function getDatabaseConnection($table = null) {
     $host = 'bshfoyw8lhufkszxhddq-mysql.services.clever-cloud.com'; // CleverCloud MySQL host
-    $dbname = 'bshfoyw8lhufkszxhddq';
+    $dbname = 'bshfoyw8lhufkszxhddq'; 
     $username = 'utoyqieuqvce4tua';
     $password = 'OqTJFQWHhe9FNxgfYdni';
 
