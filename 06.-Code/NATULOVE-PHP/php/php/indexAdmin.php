@@ -14,7 +14,7 @@
 </div>
 
 <script>
-    // Función para mostrar una frase motivadora aleatoria
+   
     function mostrarFraseMotivadora() {
         const frases = [
             "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
@@ -29,14 +29,14 @@
             "No cuentes los días, haz que los días cuenten."
         ];
 
-        // Selecciona una frase aleatoria
+    
         const fraseSeleccionada = frases[Math.floor(Math.random() * frases.length)];
 
-        // Inserta la frase en el elemento con el ID 'fraseMotivadora'
+      
         document.getElementById('fraseMotivadora').textContent = fraseSeleccionada;
     }
 
-    // Ejecutar la función cuando la página se haya cargado
+ 
     document.addEventListener("DOMContentLoaded", mostrarFraseMotivadora);
 </script>
 

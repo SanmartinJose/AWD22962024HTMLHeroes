@@ -21,44 +21,42 @@
 </svg>
 <body>
   
-  <div class="container-form">
-    <form action="./scriptsphp/login.php" method="POST" id="loginForm" class="form-control bg-body-secondary">
-      <div class="container-fluid text-center">
-        <img class="mb-4" src="./img/logo3.png" alt="" width="90" height="57">
-      </div>
-      <h1 class="h3 mb-3 fw-normal">Inicio de sesion</h1>
-      <div class="alert alert-danger d-flex align-items-center d-none" role="alert" id="alertLogin">
-        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" width="30" height="30"><use xlink:href="#exclamation-triangle-fill"/></svg>
-        <div>
-          Usuario o contraseña incorrecto
-        </div>
-      </div>
-      
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
-        <label for="username">Usuario</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" placeholder="Password">
-        <label for="passwordLogin">Contraseña</label>
-      </div>
-      <button class="btn btn-dark w-100 py-2" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-body-secondary text-center" >© 2024</p>
-    </form>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <div class="container-form d-flex justify-content-center align-items-center vh-100">
+  <form action="./scriptsphp/login.php" method="POST" id="loginForm" class="form-control bg-white border border-danger shadow p-4 rounded">
+    <div class="container-fluid text-center">
+      <img class="mb-4" src="./img/logo.png" alt="Logo" width="90" height="90">
+    </div>
+    <h1 class="h3 mb-3 fw-bold text-danger text-center">Inicio de sesión</h1>
     
-  </div>
+    <!-- Mensaje de alerta -->
+    <div class="alert alert-danger d-flex align-items-center d-none" role="alert" id="alertLogin">
+      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" width="30" height="30">
+        <use xlink:href="#exclamation-triangle-fill"></use>
+      </svg>
+      <div>Usuario o contraseña incorrectos</div>
+    </div>
+
+    <!-- Campo de usuario -->
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control border-danger" id="username" name="username" placeholder="Username" required>
+      <label for="username">Usuario</label>
+    </div>
+
+    <!-- Campo de contraseña -->
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control border-danger" id="passwordLogin" name="passwordLogin" placeholder="Password" required>
+      <label for="passwordLogin">Contraseña</label>
+    </div>
+
+    <!-- Botón de inicio de sesión -->
+    <button class="btn btn-danger w-100 py-2" type="submit">Iniciar sesión</button>
+
+    <p class="mt-5 mb-3 text-body-secondary text-center">© 2024</p>
+  </form>
+</div>
 
 
-<<<<<<< HEAD
 
-
-=======
-  
->>>>>>> 95d5320d8fc17912c670f47c0577b08d50011924
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="./scriptsJs/login.js"></script>
 </body>
