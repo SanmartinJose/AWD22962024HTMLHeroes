@@ -9,7 +9,7 @@
 <head>
    <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NatuLove Products</title>
+  <title>Add Product</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -40,6 +40,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo $direction ?>php/aboutUs.php">¿Quiénes Somos?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo $direction ?>php/ProductManagment.php">Agregar Producto</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="<?php echo $direction ?>php/natuLove.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
