@@ -102,6 +102,23 @@
         </li>
 		  <li class="nav-item">
           <a class="nav-link" href="almondsDescrip.php">Ofertas</a>
+        </li>     
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" href="#">
+            <i class="bi bi-cart3"></i>
+            <span>Carrito</span>
+          </a>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="<?php echo $direction ?>php/natuLove.php" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="userDropdown" style="min-width: 150px;">
+            <div class="p-3">
+              <a class="dropdown-item" href="php/Register.php">Registrarse</a>
+              <a class="dropdown-item" href="#">Iniciar Sesión</a>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
