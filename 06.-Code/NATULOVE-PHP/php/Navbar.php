@@ -115,8 +115,17 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="userDropdown" style="min-width: 150px;">
             <div class="p-3">
+<<<<<<< HEAD
               <a class="dropdown-item" href="<?php echo $direction ?>php/Register.php">Registrarse</a>
               <a class="dropdown-item" href="indexAdmin.php">Iniciar Sesión</a>
+=======
+
+         <a class="dropdown-item" href="<?php echo $direction ?>php/Register.php">Registrarse</a>
+              <a class="dropdown-item" href="<?php echo $direction ?> php/indexAdmin.php">Iniciar Sesión</a>
+
+              
+
+>>>>>>> 95d5320d8fc17912c670f47c0577b08d50011924
             </div>
           </div>
         </li>
