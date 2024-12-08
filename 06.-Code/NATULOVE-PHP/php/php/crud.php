@@ -1,8 +1,8 @@
 <?php
 
-$servidor = "mysql:dbname=sistema_inventario;host=localhost";
-$user = "admin";
-$pass = "admin";
+$servidor = "mysql:dbname=bshfoyw8lhufkszxhddq;host=bshfoyw8lhufkszxhddq-mysql.services.clever-cloud.com";
+$user = "utoyqieuqvce4tua";
+$pass = "OqTJFQWHhe9FNxgfYdni";
 try {
     $pdo = new PDO($servidor, $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
    
