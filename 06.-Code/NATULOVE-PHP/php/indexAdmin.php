@@ -54,30 +54,7 @@
 
 
 
-<!-- <div class="modal fade" id="secretModal" tabindex="-1" aria-labelledby="secretModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="secretModalLabel">Crear Super Usuario</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="superUserForm">
-          <div class="mb-3">
-            <label for="super-username" class="form-label">Usuario:</label>
-            <input type="text" class="form-control" id="super-username" required>
-          </div>
-          <div class="mb-3">
-            <label for="super-password" class="form-label">Contraseña:</label>
-            <input type="password" class="form-control" id="super-password" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Registrar Super Usuario</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-  
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="./scriptsJs/login.js"></script>
 </body>
