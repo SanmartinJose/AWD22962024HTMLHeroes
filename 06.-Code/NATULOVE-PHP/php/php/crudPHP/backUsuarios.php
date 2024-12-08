@@ -63,7 +63,7 @@ if ($action == 'create') {
 class Crud{
 	 public $conn = null;
 	 function __construct(){
-	 	$this->conn = new mysqli('localhost','admin','admin','sistema_inventario');
+	 	$this->conn = new mysqli('bshfoyw8lhufkszxhddq-mysql.services.clever-cloud.com','utoyqieuqvce4tua','OqTJFQWHhe9FNxgfYdni','bshfoyw8lhufkszxhddq');
 		 if ($this->conn->connect_error) {
 			die('Connection failed: ' . $this->conn->connect_error);
 		}
