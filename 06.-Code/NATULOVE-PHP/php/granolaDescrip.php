@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descripción del Producto - Flor Eterna</title>
-    <link rel="stylesheet" href="../../NATULOVE-PHP/css/ProductDescription.css">
+    <link rel="stylesheet" href=".././css/ProductDescription.css">
 </head>
 <body>
 <?php include 'Navbar.php'; ?>

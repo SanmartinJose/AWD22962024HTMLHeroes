@@ -20,12 +20,12 @@
     <div class="row row-cols-1 row-cols-md-3 g-4" >
       <?php
         $products = [
-          ["img" => "../../NATULOVE-PHP/imagenes/pistacho.png", "title" => "Pistachios", "price" => "$4.50", "link" => "pistachoDescrip.php"],
-          ["img" => "../../NATULOVE-PHP/imagenes/almonds.png", "title" => "Almendras", "price" => "$4.99", "link" => "almondsDescrip.php"],
-          ["img" => "../../NATULOVE-PHP/imagenes/paprika.png", "title" => "Paprika", "price" => "$2.50", "link" => "paprikaDescrip.php"],
-          ["img" => "../../NATULOVE-PHP/imagenes/chocolates2.png", "title" => " Mix Chocolates", "price" => "$6.50", "link" => "chocolateDescrip.php"],
-          ["img" => "../../NATULOVE-PHP/imagenes/redroses.png", "title" => "Rosa Eterna", "price" => "$9.99", "link" => "eternalFlower.php"],
-          ["img" => "../../NATULOVE-PHP/imagenes/granola3.jpg", "title" => "Granola", "price" => "$5.99", "link" => "granolaDescrip.php"],
+          ["img" => "../imagenes/almonds.jpg", "title" => "Pistachios", "price" => "$4.50", "link" => "pistachoDescrip.php"],
+          ["img" => "../imagenes/almonds.png", "title" => "Almendras", "price" => "$4.99", "link" => "almondsDescrip.php"],
+          ["img" => "../imagenes/paprika.png", "title" => "Paprika", "price" => "$2.50", "link" => "paprikaDescrip.php"],
+          ["img" => "../imagenes/chocolates2.png", "title" => " Mix Chocolates", "price" => "$6.50", "link" => "chocolateDescrip.php"],
+          ["img" => "../imagenes/redroses.png", "title" => "Rosa Eterna", "price" => "$9.99", "link" => "eternalFlower.php"],
+          ["img" => "../imagenes/granola3.jpg", "title" => "Granola", "price" => "$5.99", "link" => "granolaDescrip.php"],
         ];
 
         foreach ($products as $product) {
