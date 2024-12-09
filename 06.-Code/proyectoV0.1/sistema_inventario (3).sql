@@ -200,22 +200,7 @@ INSERT INTO `productos` (`id_producto`, `nombre_producto`, `descripcion`, `preci
 (2, 'LABIAL', 'rojo', 45, 'maquillaje', 30, 'activo', 'sinImpuesto', '0'),
 (3, 'Jabon', 'rosas', 3, 'cuidaoP', 3, 'activo', 'iva', '3'),
 (4, 'crema33', 'kkjk', 45, 'cuidadoC', 7, 'activo', 'rise', '5'),
-(5, 'cremaMICAELA', '535', 343, 'cuidaoP', 8, 'inactivo', 'sinImpuesto', '0'),
-(6, 'Nivea', '450ml', 45, 'cuidaoP', 7, 'inactivo', 'iva', '5'),
-(7, 'Nivea', 'xaa', 3323, 'cuidaoP', 7, 'inactivo', 'iva', '2'),
-(8, 'tinte', 'azul', 45, 'cuidaoP', 7, 'inactivo', 'sinImpuesto', '0'),
-(9, 'crema', 'd', 45, 'cuidaoP', 7, 'activo', 'sinImpuesto', '0'),
-(10, 'crema', 'hj', 45, 'cuidadoC', 7, 'activo', 'iva', '0'),
-(11, 'peinllla', 'azul', 45, 'cuidadoC', 7, 'inactivo', 'sinImpuesto', '0'),
-(12, 'cremaMICAELA56', 'azul', 45, 'cuidadoC', 5, 'inactivo', 'iva', '9'),
-(13, 'cabello', 'corte de cabello', 2.5, 'cuidadoC', 100, 'inactivo', 'sinImpuesto', '0'),
-(14, 'crema33', 'manos', 45, 'cuidaoP', 7, 'inactivo', 'sinImpuesto', '0'),
-(15, 'crema34', 'hjadhujwh', 7878, 'cuidaoP', 3, 'inactivo', 'iva', '7'),
-(16, 'crema3', 'djakdak', 4343, 'cuidaoP', 7, 'inactivo', 'sinImpuesto', '0'),
-(17, 'crema33', 'a', 45, 'cuidaoP', 7, 'inactivo', 'sinImpuesto', '0'),
-(18, 'plancha', 'jaj', 45, 'cuidaoP', 7, 'inactivo', 'iva', '7'),
-(19, 'crema33', 'kl', 45, 'cuidaoP', 7, 'inactivo', 'ice', '8'),
-(20, 'crema33', 'dasda', 45, 'cuidaoP', 7, 'inactivo', 'sinImpuesto', '0');
+(5, 'crema33', 'dasda', 45, 'cuidaoP', 7, 'inactivo', 'sinImpuesto', '0');
 
 --
 -- Disparadores `productos`
@@ -247,10 +232,7 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`ID_ROL`, `NOMBRE_ROL`, `ACCESOS`, `DESCRIPCION`) VALUES
 (1, 'Administrador', 'reportes,inventario,ventas,usuarios,clientes', 'ACceso a todo'),
-(2, 'Administrador', 'reportes, inventario, ventas, usuarios, clientes', 'Acceso a todo'),
-(3, 'juez', 'reportes,inventario', 'sww'),
-(4, 'juez', 'reportes,inventario,ventas,usuarios,clientes', 'sww'),
-(5, 'juez', 'reportes,inventario,ventas,usuarios,clientes', 'sww');
+(2, 'Vendedor', 'reportes, inventario, ventas, usuarios, clientes', 'Acceso a todo');
 
 -- --------------------------------------------------------
 
@@ -278,12 +260,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `cedula`, `email`, `username`, `passwordLogin`, `telefono`, `direccion`, `id_rol`, `fecha_creacion`, `estado`) VALUES
-(2, 'Josue', 'Guallichico', 1754143707, 'josueloy12@gmail.com', 'josuexda', 0x31323334, '0992622594', 'Amaguana, barrio la victoria', 1, '2020-07-13 00:00:00', 'activo'),
-(4, 'Juan', 'Pérez', 12345678, 'juan@example.com', 'juanito', 0x7365637265746f313233, '0991234567', 'Av. Principal 123', 2, '2024-08-27 00:00:00', 'activo'),
-(5, 'Alejandro', 'Cardenas', 1234567890, 'alejandro@gmail.com', 'alejandrito', 0x7365637265746f343536, '0991212123', 'Av. Principal 4556', 4, '2024-08-27 00:00:00', 'activo'),
-(6, 'Abel', 'Loya', 1754143707, 'josueloy12@gmail.com', 'abelloya', 0x31323334, '0992622594', 'Amaguana, barrio la victoria2', 1, '2020-07-13 00:00:00', 'desactivo'),
-(7, 'Josuwewe', 'XDa', 2147483647, 'josueloy12@gmail.com', 'admin', 0x47314b676d374c74446e6f58396666506267796d35773d3d, '0992724345', 'Quito', 1, '0000-00-00 00:00:00', 'activo'),
-(8, 'Amable', 'Guallichico', 2147483647, 'josueloy12@gmail.com', 'amable12', 0x78436e61393470344c734b6a4b586c4c385175794b513d3d, '0992724345', 'Quito', 1, '0000-00-00 00:00:00', 'activo');
+(1, 'Josue', 'Guallichico', 1754143707, 'josueloy12@gmail.com', 'josuexda', 0x31323334, '0992622594', 'Amaguana, barrio la victoria', 1, '2020-07-13 00:00:00', 'activo'),
+(2, 'Juan', 'Pérez', 12345678, 'juan@example.com', 'admin', 0x7365637265746f313233, '0991234567', 'Av. Principal 123', 2, '2024-08-27 00:00:00', 'activo');
+
 
 --
 -- Índices para tablas volcadas
