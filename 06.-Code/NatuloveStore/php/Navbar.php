@@ -97,7 +97,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="almondsDescrip.php">Ofertas</a>
+                        <a class="nav-link" href="<?php echo $direction ?>php/offersDescription.php">Ofertas</a>
                     </li>     
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="#">
@@ -112,7 +112,7 @@
                         <div class="dropdown-menu" aria-labelledby="userDropdown" style="min-width: 150px;">
                             <div class="p-3">
                                 <a class="dropdown-item" href="<?php echo $direction ?>php/Register.php">Registrarse</a>
-                                <a class="dropdown-item" href="<?php echo $direction ?>php/indexAdmin.php">Iniciar Sesión</a>
+                                <a class="dropdown-item" href="<?php echo $direction ?>php/Login.php">Iniciar Sesión</a>
 
                             </div>
                         </div>

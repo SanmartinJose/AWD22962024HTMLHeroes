@@ -12,12 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $username = trim($_POST['username']);
     $passwordLogin = $_POST['passwordLogin'] ?? '';
+    $confirm_password = $_POST['confirm_password'] ?? '';
     $phone = trim($_POST['phone']);
     $address = trim($_POST['address']);
     $terms = isset($_POST['terms']);
 
     // Validaciones
-    validateInput($first_name, $last_name, $cedula, $email, $username, $passwordLogin, $phone, $address, $terms, $errors);
+    validateInput($first_name, $last_name, $cedula, $email, $username, $passwordLogin, $confirm_password, $phone, $address, $terms, $errors);
 
     // Insertar en base de datos si no hay errores
     if (empty($errors)) {
@@ -40,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-function validateInput($first_name, $last_name, $cedula, $email, $username, $passwordLogin, $phone, $address, $terms, &$errors) {
+function validateInput($first_name, $last_name, $cedula, $email, $username, $passwordLogin, $confirm_password, $phone, $address, $terms, &$errors) {
+    // Validaciones específicas
     if (!preg_match("/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/", $first_name)) {
         $errors['first_name'] = "Solo se permiten caracteres alfabéticos y espacios.";
     }
@@ -61,8 +63,12 @@ function validateInput($first_name, $last_name, $cedula, $email, $username, $pas
         $errors['username'] = "El nombre de usuario es obligatorio.";
     }
 
-    if (empty($passwordLogin)) {
-        $errors['passwordLogin'] = "La contraseña de inicio de sesión es obligatoria.";
+    if (!preg_match("/^(?=.*[0-9])(?=.*[.@#&_!-])(?=.*[a-zA-Z]).{8,}$/", $passwordLogin)) {
+        $errors['passwordLogin'] = "La contraseña debe tener al menos 8 caracteres, incluir un número y un carácter especial (. @ # & _).";
+    }
+
+    if ($passwordLogin !== $confirm_password) {
+        $errors['confirm_password'] = "Las contraseñas no coinciden.";
     }
 
     if (!preg_match("/^[0-9]+$/", $phone)) {
@@ -78,7 +84,6 @@ function validateInput($first_name, $last_name, $cedula, $email, $username, $pas
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -86,20 +91,13 @@ function validateInput($first_name, $last_name, $cedula, $email, $username, $pas
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script>
-        function showSuccessMessage() {
-            alert('¡Registro exitoso!');
-        }
-    </script>
 </head>
 <body>
 <?php include 'Navbar.php'; ?>
 <div class="container mt-5">
     <h1 class="text-center mb-4">Registro de Usuario</h1>
     <?php if ($success): ?>
-        <script>
-            showSuccessMessage();
-        </script>
+        <div class="alert alert-success text-center">¡Registro exitoso!</div>
     <?php endif; ?>
     <form method="POST" action="">
         <!-- Campos del formulario -->
@@ -129,9 +127,14 @@ function validateInput($first_name, $last_name, $cedula, $email, $username, $pas
             <div class="text-danger"><?= $errors['username'] ?? '' ?></div>
         </div>
         <div class="mb-3">
-            <label for="passwordLogin" class="form-label">Contraseña de Inicio de Sesión</label>
+            <label for="passwordLogin" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="passwordLogin" name="passwordLogin">
             <div class="text-danger"><?= $errors['passwordLogin'] ?? '' ?></div>
+        </div>
+        <div class="mb-3">
+            <label for="confirm_password" class="form-label">Confirmar Contraseña</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+            <div class="text-danger"><?= $errors['confirm_password'] ?? '' ?></div>
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Teléfono</label>

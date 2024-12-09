@@ -62,7 +62,7 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
       <div class="card">
-        <img src="imagenes/chocolateBag.jpg " class="card-img-top" alt="..." height="300px" /> 
+        <img src="img/chocolateBag.jpg " class="card-img-top" alt="..." height="300px" /> 
         <div class="card-body">
           <h5 class="card-title">Mix de chocolotes</h5>
           <p class="card-text">Una selección de pequeños detalles sobre chocolates, destacando su sabor, textura y variedad.</p>
