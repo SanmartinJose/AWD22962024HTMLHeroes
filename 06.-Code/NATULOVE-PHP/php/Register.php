@@ -8,24 +8,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitización de entrada
     $first_name = trim($_POST['first_name']);
     $last_name = trim($_POST['last_name']);
+    $cedula = trim($_POST['cedula']);
     $email = trim($_POST['email']);
-    $gender = $_POST['gender'] ?? '';
-    $birth_date = $_POST['birth_date'] ?? '';
+    $username = trim($_POST['username']);
+    $passwordLogin = $_POST['passwordLogin'] ?? '';
+    $phone = trim($_POST['phone']);
     $address = trim($_POST['address']);
-    $password = $_POST['password'] ?? '';
-    $confirm_password = $_POST['confirm_password'] ?? '';
     $terms = isset($_POST['terms']);
 
     // Validaciones
-    validateInput($first_name, $last_name, $email, $gender, $birth_date, $address, $password, $confirm_password, $terms, $errors);
+    validateInput($first_name, $last_name, $cedula, $email, $username, $passwordLogin, $phone, $address, $terms, $errors);
 
     // Insertar en base de datos si no hay errores
     if (empty($errors)) {
         $connection = getDatabaseConnection();
-        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        $hashed_password = password_hash($passwordLogin, PASSWORD_BCRYPT);
+        $creation_date = date('Y-m-d H:i:s');
+        $status = 'activo';
 
-        $stmt = $connection->prepare("INSERT INTO users (first_name, last_name, email, gender, birth_date, address, password, role) VALUES (?, ?, ?, ?, ?, ?, ?, 'customer')");
-        $stmt->bind_param("sssssss", $first_name, $last_name, $email, $gender, $birth_date, $address, $hashed_password);
+        $stmt = $connection->prepare("INSERT INTO `users` ( `first_name`, `last_name`, `cedula`, `email`, `username`, `passwordLogin`, `phone`, `adress`, `creation_date`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('ssssssssss', $first_name, $last_name, $cedula, $email, $username, $hashed_password, $phone, $address, $creation_date, $status);
 
         if ($stmt->execute()) {
             $success = true;
@@ -38,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-function validateInput($first_name, $last_name, $email, $gender, $birth_date, $address, $password, $confirm_password, $terms, &$errors) {
+function validateInput($first_name, $last_name, $cedula, $email, $username, $passwordLogin, $phone, $address, $terms, &$errors) {
     if (!preg_match("/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/", $first_name)) {
         $errors['first_name'] = "Solo se permiten caracteres alfabéticos y espacios.";
     }
@@ -47,35 +49,28 @@ function validateInput($first_name, $last_name, $email, $gender, $birth_date, $a
         $errors['last_name'] = "Solo se permiten caracteres alfabéticos y espacios.";
     }
 
+    if (!preg_match("/^[0-9]+$/", $cedula)) {
+        $errors['cedula'] = "Solo se permiten números.";
+    }
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = "Formato de correo electrónico no válido.";
     }
 
-    if (!in_array($gender, ['Masculino', 'Femenino'])) {
-        $errors['gender'] = "Seleccione un género válido.";
+    if (empty($username)) {
+        $errors['username'] = "El nombre de usuario es obligatorio.";
     }
 
-    if (empty($birth_date)) {
-        $errors['birth_date'] = "Seleccione una fecha de nacimiento válida.";
-    } else {
-        $birth_date_obj = new DateTime($birth_date);
-        $today = new DateTime();
-        $age = $today->diff($birth_date_obj)->y;
-        if ($age < 18) {
-            $errors['birth_date'] = "Debe ser mayor de 18 años.";
-        }
+    if (empty($passwordLogin)) {
+        $errors['passwordLogin'] = "La contraseña de inicio de sesión es obligatoria.";
+    }
+
+    if (!preg_match("/^[0-9]+$/", $phone)) {
+        $errors['phone'] = "Solo se permiten números.";
     }
 
     if (!preg_match("/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ,.]+$/", $address)) {
         $errors['address'] = "Solo se permiten caracteres alfanuméricos, espacios y puntuación.";
-    }
-
-    if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$.!%*?&])[A-Za-z\d@$.!%*?&]{8,}$/", $password)) {
-        $errors['password'] = "La contraseña debe tener al menos 8 caracteres, incluyendo un número y un carácter especial.";
-    }
-
-    if ($password !== $confirm_password) {
-        $errors['confirm_password'] = "Las contraseñas no coinciden.";
     }
 
     if (!$terms) {
@@ -119,39 +114,34 @@ function validateInput($first_name, $last_name, $email, $gender, $birth_date, $a
             <div class="text-danger"><?= $errors['last_name'] ?? '' ?></div>
         </div>
         <div class="mb-3">
+            <label for="cedula" class="form-label">Cédula</label>
+            <input type="text" class="form-control" id="cedula" name="cedula" value="<?= htmlspecialchars($cedula ?? '') ?>">
+            <div class="text-danger"><?= $errors['cedula'] ?? '' ?></div>
+        </div>
+        <div class="mb-3">
             <label for="email" class="form-label">Correo Electrónico</label>
             <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email ?? '') ?>">
             <div class="text-danger"><?= $errors['email'] ?? '' ?></div>
         </div>
         <div class="mb-3">
-            <label class="form-label">Género</label>
-            <div>
-                <input type="radio" id="male" name="gender" value="Masculino" <?= isset($gender) && $gender === 'Masculino' ? 'checked' : '' ?>>
-                <label for="male">Masculino</label>
-                <input type="radio" id="female" name="gender" value="Femenino" <?= isset($gender) && $gender === 'Femenino' ? 'checked' : '' ?>>
-                <label for="female">Femenino</label>
-            </div>
-            <div class="text-danger"><?= $errors['gender'] ?? '' ?></div>
+            <label for="username" class="form-label">Nombre de Usuario</label>
+            <input type="text" class="form-control" id="username" name="username" value="<?= htmlspecialchars($username ?? '') ?>">
+            <div class="text-danger"><?= $errors['username'] ?? '' ?></div>
         </div>
         <div class="mb-3">
-            <label for="birth_date" class="form-label">Fecha de Nacimiento</label>
-            <input type="date" class="form-control" id="birth_date" name="birth_date" value="<?= htmlspecialchars($birth_date ?? '') ?>">
-            <div class="text-danger"><?= $errors['birth_date'] ?? '' ?></div>
+            <label for="passwordLogin" class="form-label">Contraseña de Inicio de Sesión</label>
+            <input type="password" class="form-control" id="passwordLogin" name="passwordLogin">
+            <div class="text-danger"><?= $errors['passwordLogin'] ?? '' ?></div>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Teléfono</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="<?= htmlspecialchars($phone ?? '') ?>">
+            <div class="text-danger"><?= $errors['phone'] ?? '' ?></div>
         </div>
         <div class="mb-3">
             <label for="address" class="form-label">Dirección</label>
             <textarea class="form-control" id="address" name="address"><?= htmlspecialchars($address ?? '') ?></textarea>
             <div class="text-danger"><?= $errors['address'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password">
-            <div class="text-danger"><?= $errors['password'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <label for="confirm_password" class="form-label">Confirmar Contraseña</label>
-            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
-            <div class="text-danger"><?= $errors['confirm_password'] ?? '' ?></div>
         </div>
         <div class="mb-3">
             <div class="form-check">
