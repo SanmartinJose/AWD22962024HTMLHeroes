@@ -20,8 +20,8 @@
     <div class="row row-cols-1 row-cols-md-3 g-4" >
       <?php
         $products = [
-          ["img" => "../imagenes/almonds.jpg", "title" => "Pistachios", "price" => "$4.50", "link" => "pistachoDescrip.php"],
-          ["img" => "../imagenes/almonds.png", "title" => "Almendras", "price" => "$4.99", "link" => "almondsDescrip.php"],
+          ["img" => "../imagenes/pistacho.png", "title" => "Pistachios", "price" => "$4.50", "link" => "pistachoDescrip.php"],
+          ["img" => "../imagenes/almonds2.jpg", "title" => "Almendras", "price" => "$4.99", "link" => "almondsDescrip.php"],
           ["img" => "../imagenes/paprika.png", "title" => "Paprika", "price" => "$2.50", "link" => "paprikaDescrip.php"],
           ["img" => "../imagenes/chocolates2.png", "title" => " Mix Chocolates", "price" => "$6.50", "link" => "chocolateDescrip.php"],
           ["img" => "../imagenes/redroses.png", "title" => "Rosa Eterna", "price" => "$9.99", "link" => "eternalFlower.php"],
