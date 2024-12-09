@@ -43,9 +43,9 @@ if (!in_array($seccion_actual, $accesos_usuario)) {
                     <label for="categoria">Categoría del Producto:</label>
                     <select class="form-select" id="categoria" placeholder="Categoría" name="categoria" required>
                         <option value="" disabled selected>Seleccione una categoría</option>
-                        <option value="cuidaoP">Cuidado de la piel</option>
-                        <option value="cuidadoC">Cuidado del Cabello</option>
-                        <option value="maquillaje">Maquillaje</option>
+                        <option value="cuidaoP">Chocolates</option>
+                        <option value="cuidadoC">Productos Secos</option>
+                       
                     </select>
                 </div>
                 <div class="form-group">
