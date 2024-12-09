@@ -100,7 +100,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                       <a class="dropdown-item" href="<?php echo $direction ?>php/catalogPro.php">Ofertas</a>
+                        <a class="nav-link" href="almondsDescrip.php">Ofertas</a>
                     </li>     
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="#">

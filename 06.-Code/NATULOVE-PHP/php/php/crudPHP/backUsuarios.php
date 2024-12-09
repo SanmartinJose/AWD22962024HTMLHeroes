@@ -14,7 +14,7 @@ if ($action == 'create') {
     $rol = $_POST['rol'];
 	
 	$data = $crud->create($id_usuario
-	, $nombres, $apellidos, $cedula, $email, $username, $password, $telefono, $direccion, $rol);
+	, $nombres, $apellidos, $cedula, $email, $username, $password, $telefono, $direccion);
 	echo $data;
 }elseif ($action == 'read') {
 	$data = $crud->read();
@@ -69,22 +69,22 @@ class Crud{
 		}
 	 }
 	
-	function create($nombres, $apellidos, $cedula, $email, $username, $password, $telefono, $direccion, $rol) {
+	function create($first_name, $last_name, $cedula, $email, $username, $hashed_password, $phone, $address) {
 		$passphrase = 'Password';
-		$encryptedPassword = openssl_encrypt($password, 'aes-256-cbc', $passphrase, 0, substr(hash('sha256', $passphrase, true), 0, 16));
-	
-		$stmt = $this->conn->prepare("INSERT INTO usuarios (nombre, apellido, cedula, email, username, passwordLogin, telefono, direccion, id_rol) 
-									  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	
-		$stmt->bind_param("ssssssssi", $nombres, $apellidos, $cedula, $email, $username, $encryptedPassword, $telefono, $direccion, $rol);
-	
-		// Ejecutamos la consulta
-		if ($stmt->execute()) {
-			return json_encode(['status' => 'success', 'message' => 'User registered successfully.']);
-		} else {
-			return json_encode(['status' => 'error', 'message' => 'Execution failed: ' . $stmt->error]);
-		}
-		$stmt->close();
+		$encryptedPassword = openssl_encrypt($hashed_password, 'aes-256-cbc', $passphrase, 0, substr(hash('sha256', $passphrase, true), 0, 16));
+		$creation_date = date('Y-m-d H:i:s');
+        $status = 'activo';
+
+        $stmt = $this->conn->prepare("INSERT INTO `users` ( `first_name`, `last_name`, `cedula`, `email`, `username`, `passwordLogin`, `phone`, `adress`, `creation_date`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('ssssssssss', $first_name, $last_name, $cedula, $email, $username, $encryptedPassword, $phone, $address, $creation_date, $status);
+
+        if ($stmt->execute()) {
+            $success = true;
+        } else {
+            $errors['database'] = "Error en la base de datos: " . $stmt->error;
+        }
+
+        $stmt->close();
 	}
 
 	function createRol($nombre_rol, $descripcion, $accesos) {
@@ -115,26 +115,26 @@ class Crud{
 
 	function read(){
 		$table = " ";
-		$res = $this->conn->query("SELECT u.id_usuario, u.nombre, u.apellido, u.cedula, u.email, u.username, u.telefono, r.nombre_rol AS rol, r.accesos, u.estado FROM usuarios u JOIN roles r ON u.id_rol = r.id_rol");
+		$res = $this->conn->query("SELECT u.id_user, u.first_name, u.last_name, u.cedula, u.email, u.username, u.phone, r.nombre_rol AS rol, r.accesos, u.status FROM users u JOIN roles r ON u.id_rol = r.id_rol");
 		if ($res->num_rows > 0) {
 			while ($row = $res->fetch_array()) {
 				$table .= "<tr>";
-				$table .= "<td>".$row['id_usuario']."</td>";
-				$table .= "<td>".$row['nombre']."</td>";
-				$table .= "<td>".$row['apellido']."</td>";
+				$table .= "<td>".$row['id_user']."</td>";
+				$table .= "<td>".$row['first_name']."</td>";
+				$table .= "<td>".$row['last_name']."</td>";
 				$table .= "<td>".$row['cedula']."</td>";
 				$table .= "<td>".$row['email']."</td>";
                 $table .= "<td>".$row['username']."</td>";
-                $table .= "<td>".$row['telefono']."</td>";
+                $table .= "<td>".$row['phone']."</td>";
                 $table .= "<td>".$row['rol']."</td>";
                 $table .= "<td>".$row['accesos']."</td>";
-                $table .= "<td>".$row['estado']."</td>";
+                $table .= "<td>".$row['status']."</td>";
 				$table .= "<td>
-							<button type='button' class='btn btn-primary' onclick='editarUsuario(".$row['id_usuario'].")'>Editar</button>";
-                if($row['estado'] == 'activo'){
-                    $table .="<button type='button' class='btn btn-danger' onclick='desactivarUsuario(".$row['id_usuario'].")'>Desactivar</button></td>";
+							<button type='button' class='btn btn-primary' onclick='editarUsuario(".$row['id_user'].")'>Editar</button>";
+                if($row['status'] == 'activo'){
+                    $table .="<button type='button' class='btn btn-danger' onclick='desactivarUsuario(".$row['id_user'].")'>Desactivar</button></td>";
                 }else{
-                    $table .="<button type='button' class='btn btn-success' onclick='activarUsuario(".$row['id_usuario'].")'>Activar</button></td>";
+                    $table .="<button type='button' class='btn btn-success' onclick='activarUsuario(".$row['id_user'].")'>Activar</button></td>";
                 }
 				$table .= "</tr>";
 			}
@@ -162,7 +162,7 @@ class Crud{
 		}
 	}
 	function desactive($id_usuario) {
-		$stmt = $this->conn->prepare("UPDATE usuarios SET estado = 'desactivo' WHERE id_usuario = ?");
+		$stmt = $this->conn->prepare("UPDATE users SET status = 'desactivo' WHERE id_user = ?");
 
 		$stmt->bind_param("i", $id_usuario);
 		
@@ -174,7 +174,7 @@ class Crud{
 		$stmt->close();
 	}
 	function active($id_usuario){
-		$stmt = $this->conn->prepare("UPDATE usuarios SET estado = 'activo' WHERE id_usuario = ?");
+		$stmt = $this->conn->prepare("UPDATE users SET status = 'activo' WHERE id_user = ?");
 
 		$stmt->bind_param("i", $id_usuario);
 		
@@ -212,9 +212,9 @@ class Crud{
 		$encryptedPassword = openssl_encrypt($password, 'aes-256-cbc', $passphrase, 0, substr(hash('sha256', $passphrase, true), 0, 16));
 	
 		// Consulta para actualizar los datos del usuario existente
-		$stmt = $this->conn->prepare("UPDATE usuarios 
-									  SET nombre = ?, apellido = ?, cedula = ?, email = ?, username = ?, passwordLogin = ?, telefono = ?, direccion = ?, id_rol = ?
-									  WHERE id_usuario = ?");
+		$stmt = $this->conn->prepare("UPDATE users 
+									  SET first_name = ?, last_name = ?, cedula = ?, email = ?, username = ?, passwordLogin = ?, phone = ?, adress = ?, id_rol = ?
+									  WHERE id_user = ?");
 	
 		$stmt->bind_param("ssssssssii", $nombres, $apellidos, $cedula, $email, $username, $encryptedPassword, $telefono, $direccion, $rol, $id_usuario);
 	

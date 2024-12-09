@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descripción del Producto - Flor Eterna</title>
-    <link rel="stylesheet" href=".././css/ProductDescription.css">
+    <link rel="stylesheet" href="../../NATULOVE-PHP/css/ProductDescription.css">
+    <link rel="stylesheet" href="../../NATULOVE-PHP/css/Footer.css">
 </head>
 <body>
 <?php include 'Navbar.php'; ?>
@@ -12,9 +13,9 @@
 
     <main class="main-content">
         <?php
-        $mainImage = "../imagenes/almonds.jpg";
+        $mainImage = "../imagenes/almonds.png";
         $thumbnails = [
-            ["src" => "../imagenes/almonds.jpg", "alt" => "miniature 1"],
+            ["src" => "../imagenes/almonds.png", "alt" => "miniature 1"],
             ["src" => "../imagenes/almonds2.jpg", "alt" => "miniature 2"],
             ["src" => "../imagenes/almonds3.png", "alt" => "miniature 3"],
             ["src" => "../imagenes/almonds4.jpg", "alt" => "miniature 4"],
