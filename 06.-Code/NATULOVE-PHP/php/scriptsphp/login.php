@@ -5,10 +5,10 @@ $user = $_POST['username'];
 $passwordLogin = $_POST['passwordLogin'];
 $passphrase = 'Password'; 
 $user = $conn->real_escape_string($user);
-$stmt = $conn->prepare("SELECT u.id_usuario, u.username, u.passwordLogin, u.estado, r.nombre_rol, r.accesos as accesos 
-                        FROM usuarios u 
+$stmt = $conn->prepare("SELECT u.id_user, u.username, u.passwordLogin, u.status, r.nombre_rol, r.accesos as accesos 
+                        FROM users u 
                         LEFT JOIN roles r ON u.id_rol = r.id_rol 
-                        WHERE u.username = ? AND u.estado = 'activo'");
+                        WHERE u.username = ? AND u.status = 'activo'");
 $stmt->bind_param("s", $user);
 $stmt->execute();
 $result = $stmt->get_result();
