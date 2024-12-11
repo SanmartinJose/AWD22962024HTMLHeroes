@@ -28,7 +28,7 @@ async function listarUsuarios() {
 
 async function loadRoles() {
   try {
-    const response = await fetch("./crudPHP/backUsuarios.php", {
+    const response = await fetch("../crudPHP/backUsuarios.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -309,23 +309,15 @@ async function editarUsuario(id) {
     const userEditModal = new bootstrap.Modal(document.getElementById('userEditModal'));
     userEditModal.show();
     document.getElementById("userEditModal").addEventListener("shown.bs.modal", loadRolesEdit(result.rol_id));
-    document.getElementById('edit-id').value = result.id_usuario;
-    document.getElementById('edit-nombres').value = result.nombre;
-    document.getElementById('edit-apellidos').value = result.apellido;
+    document.getElementById('edit-id').value = result.id_user;
+    document.getElementById('edit-nombres').value = result.first_name;
+    document.getElementById('edit-apellidos').value = result.last_name;
     document.getElementById('edit-cedula').value = result.cedula;
     document.getElementById('edit-email').value = result.email;
     document.getElementById('edit-username').value = result.username;
     document.getElementById('edit-password').value = result.passwordLogin;
-    document.getElementById('edit-telefono').value = result.telefono;
-    document.getElementById('edit-direccion').value = result.direccion;
-
-    //document.getElementById('userEditModal').addEventListener('submit',updateUser(id));  
-    //document.getElementById('edit-rol').value = result.rol_id;
-
-            // Deshabilitar campos que no se pueden editar
-    // document.getElementById('nombre').ariaReadOnly = true;
-    // document.getElementById('apellidos').disabled = true;
-    // document.getElementById('cedula').disabled = true;
+    document.getElementById('edit-telefono').value = result.phone;
+    document.getElementById('edit-direccion').value = result.adress;
   } catch (error) {
     console.error(error);
   }
@@ -348,15 +340,15 @@ document.getElementById('userEditModal').addEventListener('submit', async functi
   // Crear el objeto de datos que se enviará en la solicitud
   const formData = new URLSearchParams({
       action: 'updateUser',  // El nombre de la acción que utilizarás en PHP para diferenciar entre las operaciones
-      id_usuario: id,  // El ID del usuario que se va a actualizar
-      nombres: nombres,
-      apellidos: apellidos,
+      id_user: id,  // El ID del usuario que se va a actualizar
+      first_name: nombres,
+      last_name: apellidos,
       cedula: cedula,
       email: email,
       username: username,
       password: password,
-      telefono: telefono,
-      direccion: direccion,
+      phone: telefono,
+      adress: direccion,
       rol: rol
   });
 

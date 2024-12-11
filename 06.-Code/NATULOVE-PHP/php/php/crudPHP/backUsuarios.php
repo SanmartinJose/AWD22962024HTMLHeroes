@@ -148,14 +148,12 @@ class Crud{
 
 	function edit($id){
 		$jsondata = array();
-		$res = $this->conn->query("SELECT * FROM persona WHERE id=".$id);
+		$res = $this->conn->query("SELECT * FROM users WHERE id=".$id);
 		while ($row = $res->fetch_array()){
-			$jsondata['id'] = $row['id'];
-			$jsondata['name'] = $row['nombre'];
-			$jsondata['lastname'] = $row['apellido'];
+			$jsondata['id'] = $row['id_user'];
+			$jsondata['name'] = $row['first_name'];
+			$jsondata['lastname'] = $row['last_name'];
 			$jsondata['email'] = $row['email'];
-			$jsondata['age'] = $row['edad'];
-			$jsondata['birthday'] = $row['fnac'];
 			header('Content-type: application/json; charset=utf-8');
     		return json_encode($jsondata);
     		exit();
@@ -186,7 +184,7 @@ class Crud{
 		$stmt->close();
 	}
 	function getUsuariosById($id_usuario) {
-		$query = "SELECT id_usuario,nombre, apellido, cedula, email, username, passwordLogin, telefono, direccion, id_rol FROM usuarios WHERE id_usuario = ?";
+		$query = "SELECT id_user, first_name, last_name, cedula, email, username, passwordLogin, phone, adress, id_rol FROM users WHERE id_user = ?";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bind_param("i", $id_usuario);  // Usa $id_usuario en lugar de $id
 		$stmt->execute();
