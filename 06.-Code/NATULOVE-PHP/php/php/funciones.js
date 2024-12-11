@@ -1,4 +1,56 @@
 
+document.getElementById('frm').addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Crear un objeto FormData desde el formulario
+    const formData = new FormData(document.getElementById('frm'));
+
+    // Realizar la solicitud con fetch
+    fetch("registrar.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Error en la respuesta del servidor");
+        }
+        return response.text(); // Procesar respuesta como texto
+    })
+    .then(response => {
+        console.log(response); // Útil para depurar
+        if (response.trim() === "ok") {
+            Swal.fire({
+                icon: 'success',
+                title: "Producto registrado con éxito!",
+                showConfirmButton: false,
+                timer: 2000
+            });
+            document.getElementById('frm').reset(); // Limpiar formulario
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: "Error al registrar el producto!",
+                text: response,
+                showConfirmButton: true
+            });
+        }
+
+        ListarProductos(); // Actualizar lista de productos
+        ListarInventario(); // Actualizar inventario
+        resetButton(); // Resetear botón
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            icon: 'error',
+            title: "Ocurrió un error inesperado",
+            text: "Por favor intenta nuevamente.",
+            showConfirmButton: true
+        });
+    });
+});
+
+
 function ListarProductos(busqueda = "") {
     fetch("listar.php", {
         method: "POST",
@@ -18,44 +70,7 @@ function ListarProductos(busqueda = "") {
     });
 }
 
-document.getElementById('frm').addEventListener("submit", function(event) {
-    event.preventDefault();  
-    fetch("registrar.php", {
-        method: "POST",
-        body: new FormData(document.getElementById('frm'))
-    })
-    .then(response => response.text())
-    .then(response => {
-        if (response.trim() === "ok") {
-            Swal.fire({
-                icon: 'success',
-                title: "Producto registrado con éxito!",
-                showConfirmButton: false,
-                timer: 2000
-            });
-        } else {
-            Swal.fire({
-                icon: 'success',
-                title: "Producto registrado con éxito!",
-                showConfirmButton: false,
-                timer: 2000
-            });
-        }
-        document.getElementById('frm').reset();  
-        ListarProductos(); 
-		ListarInventario();
-        resetButton(); 
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        Swal.fire({
-           icon: 'success',
-                title: "Producto registrado con éxito!",
-                showConfirmButton: false,
-                timer: 2000
-        });
-    });
-});
+
 
 document.getElementById('frmC').addEventListener("submit", function(event) {
     event.preventDefault();  // Evitar el envío tradicional del formulario

@@ -11,7 +11,7 @@ if (!in_array($seccion_actual, $accesos_usuario)) {
 <div class="container form-container">
 	 <h1 class="mb-0">INVENTARIO</h1>
  
-    <form id="frm" method="post">
+    <form id="frm" method="POST">
         <div class="row">
        
             <div class="col-md-3">
@@ -223,7 +223,6 @@ if (!in_array($seccion_actual, $accesos_usuario)) {
               </tr>
             </thead>
             <tbody id="datos_productos">
-              <!-- Aquí irán los datos -->
             </tbody>
           </table>
         </div>

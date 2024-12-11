@@ -82,7 +82,6 @@ if (!in_array($seccion_actual, $accesos_usuario)) {
             </tr>
           </thead>
           <tbody>
-            <!-- Filas de productos añadidos se generarán aquí -->
           </tbody>
         </table>
         
@@ -92,7 +91,7 @@ if (!in_array($seccion_actual, $accesos_usuario)) {
           <input type="text" id="totalVenta" name="totalVenta" class="form-control" readonly>
         </div>
 
-        <!-- Campo oculto para el estado del pago -->
+
         <input type="hidden" id="estadoPago" name="estado_pago" value="Pendiente">
 
         <button type="submit" class="btn btn-success">Finalizar Venta</button>

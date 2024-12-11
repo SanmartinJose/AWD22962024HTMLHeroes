@@ -13,8 +13,7 @@ if ($action == 'create') {
     $direccion = $_POST['direccion'];
     $rol = $_POST['rol'];
 	
-	$data = $crud->create($id_usuario
-	, $nombres, $apellidos, $cedula, $email, $username, $password, $telefono, $direccion);
+	$data = $crud->create($id_usuario, $nombres, $apellidos, $cedula, $email, $username, $password, $telefono, $direccion);
 	echo $data;
 }elseif ($action == 'read') {
 	$data = $crud->read();
@@ -75,7 +74,7 @@ class Crud{
 		$creation_date = date('Y-m-d H:i:s');
         $status = 'activo';
 
-        $stmt = $this->conn->prepare("INSERT INTO `users` ( `first_name`, `last_name`, `cedula`, `email`, `username`, `passwordLogin`, `phone`, `adress`, `creation_date`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->conn->prepare("INSERT INTO users ( first_name, last_name, cedula, email, username, passwordLogin, phone, adress, creation_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('ssssssssss', $first_name, $last_name, $cedula, $email, $username, $encryptedPassword, $phone, $address, $creation_date, $status);
 
         if ($stmt->execute()) {

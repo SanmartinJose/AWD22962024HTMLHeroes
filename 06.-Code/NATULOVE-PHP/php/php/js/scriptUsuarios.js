@@ -152,9 +152,13 @@ document.getElementById("userRegistrerForm").addEventListener("submit", async fu
       direccion: formData.get("direccion"),
       rol: formData.get("rol"),
     });
+    // Verificar que se están obteniendo los datos
+    for (const [key, value] of params.entries()) {
+      console.log(`${key}: ${value}`);
+    }
 
     try {
-      const response = await fetch("./crudPHP/backUsuarios.php", {
+      const response = await fetch("./crudPHP/backUsuarios", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",  // Cambiado a URL encoded
@@ -164,10 +168,9 @@ document.getElementById("userRegistrerForm").addEventListener("submit", async fu
 
       
 
+      const result = await response.json();
       if (result.status === "success") {
         alert(result.message);
-
-        // Cerrar el modal usando Bootstrap
         const modalElement = document.getElementById("userRegistrerModal");
         const modalInstance = bootstrap.Modal.getInstance(modalElement);
         modalInstance.hide();
@@ -181,6 +184,7 @@ document.getElementById("userRegistrerForm").addEventListener("submit", async fu
       alert("An error occurred while registering the user.");
     }
 });
+
 
 
 

@@ -10,9 +10,9 @@ if (isset($_POST)) {
     $estado = $_POST['estado'];
     $tipo_impuesto = $_POST['tipo_impuesto'];
     $valor_impuesto = $_POST['valor_impuesto'];
-    $id_usuario = $_POST['id_usuario']; // Asegúrate de que este dato esté disponible
 
-    // Incluir el archivo de conexión
+
+
     require("crud.php");
 
     try {
@@ -34,26 +34,26 @@ if (isset($_POST)) {
         $query->bindParam(":estado", $estado);
         $query->bindParam(":tipo_impuesto", $tipo_impuesto);
         $query->bindParam(":valor_impuesto", $valor_impuesto);
-
+       
         if ($query->execute()) {
             echo "Producto registrado o actualizado correctamente.<br>";
 
             if (empty($idp)) {
                 // Obtener el ID del nuevo producto insertado
-                $id_producto = $pdo->lastInsertId();
-                echo "Nuevo producto insertado con ID: $id_producto<br>";
+                //$id_producto = $pdo->lastInsertId();
+                //echo "Nuevo producto insertado con ID: $id_producto<br>";
 
                 // Insertar en la tabla inventario
-                $query_inventario = $pdo->prepare("INSERT INTO inventario (ID_USUARIO, FECHA, ID_PRODUCTO) VALUES (:id_usuario, NOW(), :id_producto)");
-                $query_inventario->bindParam(":id_usuario", $id_usuario);
-                $query_inventario->bindParam(":id_producto", $id_producto);
+                //$query_inventario = $pdo->prepare("INSERT INTO inventario (ID_USUARIO, FECHA, ID_PRODUCTO) VALUES (:id_usuario, NOW(), :id_producto)");
+                //$query_inventario->bindParam(":id_usuario", $id_usuario);
+                //$query_inventario->bindParam(":id_producto", $id_producto);
 
-                if ($query_inventario->execute()) {
-                    echo "Registro en inventario agregado correctamente.<br>";
-                } else {
-                    $errorInfo = $query_inventario->errorInfo();
-                    echo "Error: No se pudo registrar en el inventario. Detalles: " . $errorInfo[2] . "<br>";
-                }
+                //if ($query_inventario->execute()) {
+                    //echo "Registro en inventario agregado correctamente.<br>";
+                //} else {
+                    //$errorInfo = $query_inventario->errorInfo();
+                    //echo "Error: No se pudo registrar en el inventario. Detalles: " . $errorInfo[2] . "<br>";
+                //}
             } else {
                 echo "Producto existente actualizado.<br>";
             }
@@ -62,7 +62,9 @@ if (isset($_POST)) {
             echo "Error: No se pudo realizar la operación en la base de datos. Detalles: " . $errorInfo[2] . "<br>";
         }
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage() . "<br>";  // Mostrar el mensaje de error específico
+        echo "Error: " . $e->getMessage() ;  // Mostrar el mensaje de error específico
     }
+}else{
+    echo "No se han recibido datos.";
 }
 ?>
