@@ -28,7 +28,7 @@ async function listarUsuarios() {
 
 async function loadRoles() {
   try {
-    const response = await fetch("../crudPHP/backUsuarios.php", {
+    const response = await fetch("./crudPHP/backUsuarios.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -162,7 +162,7 @@ document.getElementById("userRegistrerForm").addEventListener("submit", async fu
         body: params.toString(),  // `params` convertido a cadena URL
       });
 
-      const result = await response.json();
+      
 
       if (result.status === "success") {
         alert(result.message);
@@ -340,15 +340,15 @@ document.getElementById('userEditModal').addEventListener('submit', async functi
   // Crear el objeto de datos que se enviará en la solicitud
   const formData = new URLSearchParams({
       action: 'updateUser',  // El nombre de la acción que utilizarás en PHP para diferenciar entre las operaciones
-      id_user: id,  // El ID del usuario que se va a actualizar
-      first_name: nombres,
-      last_name: apellidos,
+      id_usuario: id,  // El ID del usuario que se va a actualizar
+      nombres: nombres,
+      apellidos: apellidos,
       cedula: cedula,
       email: email,
       username: username,
       password: password,
-      phone: telefono,
-      adress: direccion,
+      telefono: telefono,
+      direccion: direccion,
       rol: rol
   });
 
@@ -362,8 +362,10 @@ document.getElementById('userEditModal').addEventListener('submit', async functi
           },
           body: formData.toString()
       });
+      
 
       const result = await response.json();
+
 
       if (result.status === 'success') {
           alert(result.message);
@@ -375,7 +377,7 @@ document.getElementById('userEditModal').addEventListener('submit', async functi
       listarUsuarios();
   } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred while processing the request.');
+      alert('An error occurred while processing the request.' + error);
   }
 });
 
