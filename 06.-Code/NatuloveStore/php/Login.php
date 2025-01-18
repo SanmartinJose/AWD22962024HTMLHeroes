@@ -1,37 +1,55 @@
 <?php
-include 'db_connection.php';
+require 'db_connection.php';
 
-$errors = [];
+function validateInput($data) {
+    return htmlspecialchars(stripslashes(trim($data)));
+}
+
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']);
-    $passwordLogin = trim($_POST['passwordLogin']);
+    $conn = getDatabaseConnection();
 
-    if (empty($username) || empty($passwordLogin)) {
-        $errors['login'] = "El usuario y la contraseña son obligatorios.";
+    $usernameOrEmail = validateInput($_POST['username_or_email']);
+    $password = validateInput($_POST['password']);
+
+    $errors = [];
+
+    if (empty($usernameOrEmail) || empty($password)) {
+        $errors[] = "Por favor, complete todos los campos.";
     } else {
-        $connection = getDatabaseConnection();
-        $stmt = $connection->prepare("SELECT passwordLogin FROM users WHERE username = ?");
-        $stmt->bind_param('s', $username);
+        $stmt = $conn->prepare("SELECT id, username, email, password, role FROM users WHERE username = ? OR email = ?");
+        $stmt->bind_param('ss', $usernameOrEmail, $usernameOrEmail);
         $stmt->execute();
-        $result = $stmt->get_result();
+        $stmt->store_result();
 
-        if ($result->num_rows === 1) {
-            $user = $result->fetch_assoc();
-            if (password_verify($passwordLogin, $user['passwordLogin'])) {
-                // Redirigir al index si la autenticación es exitosa
-                header("Location: ../php/indexAdmin.php");
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($id, $username, $email, $hashedPassword, $role);
+            $stmt->fetch();
+
+            if (password_verify($password, $hashedPassword)) {
+                $_SESSION['user_id'] = $id;
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = $role;
+
+                // Redirigir según el rol
+                if ($role === 'customer') {
+                    header("Location: ../index.php");
+                } else {
+                    header("Location: indexAdmin.php");
+                }
                 exit;
             } else {
-                $errors['login'] = "Usuario o contraseña incorrectos.";
+                $errors[] = "Usuario o contraseña incorrectos. Revise las credenciales.";
             }
         } else {
-            $errors['login'] = "Usuario o contraseña incorrectos.";
+            $errors[] = "Usuario o contraseña incorrectos. Revise las credenciales.";
         }
 
         $stmt->close();
-        $connection->close();
     }
+
+    $conn->close();
 }
 ?>
 
@@ -40,50 +58,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../css/loginForm.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../js/login.js" defer></script>
+    <title>Iniciar Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container-form d-flex justify-content-center align-items-center vh-100">
-    <form method="POST" id="loginForm" class="form-control bg-white border border-danger shadow p-4 rounded position-relative">
-        <!-- Flecha de regreso -->
-        <a href="../index.php" class="btn btn-outline-danger position-absolute" style="top: 10px; left: 10px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 7.5H14.5a.5.5 0 0 1 .5.5z"/>
-            </svg>
-        </a>
-
-        <div class="container-fluid text-center">
-            <img class="mb-4" src="../img/logo.png" alt="Logo" width="90" height="90">
-        </div>
-        <h1 class="h3 mb-3 fw-bold text-danger text-center">Inicio de sesión</h1>
-        
-        <?php if (!empty($errors['login'])): ?>
-            <div class="alert alert-danger d-flex align-items-center" role="alert">
-                <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" width="30" height="30">
-                    <use xlink:href="#exclamation-triangle-fill"></use>
-                </svg>
-                <div><?= htmlspecialchars($errors['login']) ?></div>
+    <?php include 'Navbar.php'; ?>
+    <div class="container mt-5">
+        <h2 class="text-center">Iniciar Sesión</h2>
+        <form method="POST" class="p-4 border rounded">
+            <?php
+            if (!empty($errors)) {
+                foreach ($errors as $error) {
+                    echo "<div class='alert alert-danger'>$error</div>";
+                }
+            }
+            ?>
+            <div class="mb-3">
+                <label for="username_or_email" class="form-label">Nombre de Usuario o Correo Electrónico:</label>
+                <input type="text" id="username_or_email" name="username_or_email" class="form-control" required>
             </div>
-        <?php endif; ?>
 
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control border-danger" id="username" name="username" placeholder="Usuario" required>
-            <label for="username">Usuario</label>
-        </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+                <button type="button" class="btn btn-secondary btn-sm mt-2" onclick="togglePasswordVisibility('password')">Mostrar</button>
+            </div>
 
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control border-danger" id="passwordLogin" name="passwordLogin" placeholder="Contraseña" required>
-            <label for="passwordLogin">Contraseña</label>
-        </div>
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            </div>
 
-        <button class="btn btn-danger w-100 py-2" type="submit">Iniciar sesión</button>
-        <p class="mt-5 mb-3 text-body-secondary text-center">© 2024</p>
-    </form>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/login.js"></script>
+            <div class="text-center">
+                <a href="Register.php" class="btn btn-link">¿No tienes cuenta? Regístrate</a>
+                <a href="passwordRecover.php" class="btn btn-link">¿Olvidaste tu contraseña?</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function togglePasswordVisibility(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.type = field.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <?php include 'Footer.php'; ?>
 </body>
 </html>

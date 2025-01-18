@@ -1,161 +1,170 @@
 <?php
-include 'db_connection.php';
+require 'db_connection.php';
 
-$errors = [];
-$success = false;
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitización de entrada
-    $first_name = trim($_POST['first_name']);
-    $last_name = trim($_POST['last_name']);
-    $cedula = trim($_POST['cedula']);
-    $email = trim($_POST['email']);
-    $username = trim($_POST['username']);
-    $passwordLogin = $_POST['passwordLogin'] ?? '';
-    $confirm_password = $_POST['confirm_password'] ?? '';
-    $phone = trim($_POST['phone']);
-    $address = trim($_POST['address']);
-    $terms = isset($_POST['terms']);
-
-    // Validaciones
-    validateInput($first_name, $last_name, $cedula, $email, $username, $passwordLogin, $confirm_password, $phone, $address, $terms, $errors);
-
-    // Insertar en base de datos si no hay errores
-    if (empty($errors)) {
-        $connection = getDatabaseConnection();
-        $hashed_password = password_hash($passwordLogin, PASSWORD_BCRYPT);
-        $creation_date = date('Y-m-d H:i:s');
-        $status = 'activo';
-
-        $stmt = $connection->prepare("INSERT INTO `users` ( `first_name`, `last_name`, `cedula`, `email`, `username`, `passwordLogin`, `phone`, `adress`, `creation_date`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('ssssssssss', $first_name, $last_name, $cedula, $email, $username, $hashed_password, $phone, $address, $creation_date, $status);
-
-        if ($stmt->execute()) {
-            $success = true;
-        } else {
-            $errors['database'] = "Error en la base de datos: " . $stmt->error;
-        }
-
-        $stmt->close();
-        $connection->close();
-    }
+function validateInput($data) {
+    return htmlspecialchars(stripslashes(trim($data)));
 }
 
-function validateInput($first_name, $last_name, $cedula, $email, $username, $passwordLogin, $confirm_password, $phone, $address, $terms, &$errors) {
-    // Validaciones específicas
-    if (!preg_match("/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/", $first_name)) {
-        $errors['first_name'] = "Solo se permiten caracteres alfabéticos y espacios.";
+function validateAge($birthDate) {
+    $today = new DateTime();
+    $dob = new DateTime($birthDate);
+    $age = $today->diff($dob)->y;
+    return $age >= 18 && $age <= 99;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $conn = getDatabaseConnection();
+
+    $firstName = validateInput($_POST['first_name']);
+    $lastName = validateInput($_POST['last_name']);
+    $birthDate = validateInput($_POST['birth_date']);
+    $email = validateInput($_POST['email']);
+    $username = validateInput($_POST['username']);
+    $password = validateInput($_POST['password']);
+    $confirmPassword = validateInput($_POST['confirm_password']);
+    $acceptTerms = isset($_POST['accept_terms']);
+    $role = 'customer';
+
+    $errors = [];
+
+    // Validations
+    if (!preg_match("/^[a-zA-ZñÑ ]+$/", $firstName)) {
+        $errors[] = "El nombre solo puede contener caracteres alfabéticos, espacios y la ñ.";
     }
 
-    if (!preg_match("/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/", $last_name)) {
-        $errors['last_name'] = "Solo se permiten caracteres alfabéticos y espacios.";
+    if (!preg_match("/^[a-zA-ZñÑ ]+$/", $lastName)) {
+        $errors[] = "El apellido solo puede contener caracteres alfabéticos, espacios y la ñ.";
     }
 
-    if (!preg_match("/^[0-9]+$/", $cedula)) {
-        $errors['cedula'] = "Solo se permiten números.";
+    if (!validateAge($birthDate)) {
+        $errors[] = "Debes tener entre 18 y 99 años.";
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = "Formato de correo electrónico no válido.";
+        $errors[] = "El formato del correo electrónico no es válido.";
+    } else {
+        $emailQuery = $conn->prepare("SELECT id FROM users WHERE email = ?");
+        $emailQuery->bind_param('s', $email);
+        $emailQuery->execute();
+        $emailQuery->store_result();
+        if ($emailQuery->num_rows > 0) {
+            $errors[] = "El correo electrónico ya está registrado.";
+        }
     }
 
-    if (empty($username)) {
-        $errors['username'] = "El nombre de usuario es obligatorio.";
+    if (!preg_match("/^[a-zA-Z0-9]+$/", $username)) {
+        $errors[] = "El nombre de usuario solo puede contener caracteres alfanuméricos.";
+    } else {
+        $usernameQuery = $conn->prepare("SELECT id FROM users WHERE username = ?");
+        $usernameQuery->bind_param('s', $username);
+        $usernameQuery->execute();
+        $usernameQuery->store_result();
+        if ($usernameQuery->num_rows > 0) {
+            $errors[] = "El nombre de usuario ya está en uso.";
+        }
     }
 
-    if (!preg_match("/^(?=.*[0-9])(?=.*[.@#&_!-])(?=.*[a-zA-Z]).{8,}$/", $passwordLogin)) {
-        $errors['passwordLogin'] = "La contraseña debe tener al menos 8 caracteres, incluir un número y un carácter especial (. @ # & _).";
+    if (strlen($password) < 8 || !preg_match("/\d/", $password)) {
+        $errors[] = "La contraseña debe tener al menos 8 caracteres y contener al menos un número.";
     }
 
-    if ($passwordLogin !== $confirm_password) {
-        $errors['confirm_password'] = "Las contraseñas no coinciden.";
+    if ($password !== $confirmPassword) {
+        $errors[] = "Las contraseñas no coinciden.";
     }
 
-    if (!preg_match("/^[0-9]+$/", $phone)) {
-        $errors['phone'] = "Solo se permiten números.";
+    if (!$acceptTerms) {
+        $errors[] = "Debes aceptar los términos y condiciones.";
     }
 
-    if (!preg_match("/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ,.]+$/", $address)) {
-        $errors['address'] = "Solo se permiten caracteres alfanuméricos, espacios y puntuación.";
+    if (empty($errors)) {
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, birth_date, email, username, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('sssssss', $firstName, $lastName, $birthDate, $email, $username, $hashedPassword, $role);
+
+        if ($stmt->execute()) {
+            echo "<div class='alert alert-success'>Registro exitoso.</div>";
+        } else {
+            echo "<div class='alert alert-danger'>Error al registrar al usuario: " . $conn->error . "</div>";
+        }
+
+        $stmt->close();
+    } else {
+        foreach ($errors as $error) {
+            echo "<div class='alert alert-danger'>$error</div>";
+        }
     }
 
-    if (!$terms) {
-        $errors['terms'] = "Debe aceptar los términos y condiciones.";
-    }
+    $conn->close();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <?php include 'Navbar.php'; ?>
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Registro de Usuario</h1>
-    <?php if ($success): ?>
-        <div class="alert alert-success text-center">¡Registro exitoso!</div>
-    <?php endif; ?>
-    <form method="POST" action="">
-        <!-- Campos del formulario -->
-        <div class="mb-3">
-            <label for="first_name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="<?= htmlspecialchars($first_name ?? '') ?>">
-            <div class="text-danger"><?= $errors['first_name'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <label for="last_name" class="form-label">Apellido</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="<?= htmlspecialchars($last_name ?? '') ?>">
-            <div class="text-danger"><?= $errors['last_name'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <label for="cedula" class="form-label">Cédula</label>
-            <input type="text" class="form-control" id="cedula" name="cedula" value="<?= htmlspecialchars($cedula ?? '') ?>">
-            <div class="text-danger"><?= $errors['cedula'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email ?? '') ?>">
-            <div class="text-danger"><?= $errors['email'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <label for="username" class="form-label">Nombre de Usuario</label>
-            <input type="text" class="form-control" id="username" name="username" value="<?= htmlspecialchars($username ?? '') ?>">
-            <div class="text-danger"><?= $errors['username'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <label for="passwordLogin" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="passwordLogin" name="passwordLogin">
-            <div class="text-danger"><?= $errors['passwordLogin'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <label for="confirm_password" class="form-label">Confirmar Contraseña</label>
-            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
-            <div class="text-danger"><?= $errors['confirm_password'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <label for="phone" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" id="phone" name="phone" value="<?= htmlspecialchars($phone ?? '') ?>">
-            <div class="text-danger"><?= $errors['phone'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <label for="address" class="form-label">Dirección</label>
-            <textarea class="form-control" id="address" name="address"><?= htmlspecialchars($address ?? '') ?></textarea>
-            <div class="text-danger"><?= $errors['address'] ?? '' ?></div>
-        </div>
-        <div class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="terms" name="terms">
-                <label class="form-check-label" for="terms">Acepto los <a href="#" target="_blank">términos y condiciones</a>.</label>
+    <div class="container mt-5">
+        <h2 class="text-center">Registro de Usuario</h2>
+        <form method="POST" class="p-4 border rounded">
+            <div class="mb-3">
+                <label for="first_name" class="form-label">Nombre:</label>
+                <input type="text" id="first_name" name="first_name" class="form-control" required>
             </div>
-            <div class="text-danger"><?= $errors['terms'] ?? '' ?></div>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Registrar</button>
-    </form>
-</div>
-<?php include 'footer.php'; ?>
+
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Apellido:</label>
+                <input type="text" id="last_name" name="last_name" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="birth_date" class="form-label">Fecha de Nacimiento:</label>
+                <input type="date" id="birth_date" name="birth_date" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de Usuario:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+                <button type="button" class="btn btn-secondary btn-sm mt-2" onclick="togglePasswordVisibility('password')">Mostrar</button>
+            </div>
+
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Repetir Contraseña:</label>
+                <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" id="accept_terms" name="accept_terms" class="form-check-input" required>
+                <label for="accept_terms" class="form-check-label">Acepto los términos y condiciones</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+
+    <script>
+        function togglePasswordVisibility(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.type = field.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <?php include 'Footer.php'; ?>
 </body>
 </html>
+
