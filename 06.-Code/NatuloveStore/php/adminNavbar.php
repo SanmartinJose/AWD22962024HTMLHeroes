@@ -38,7 +38,7 @@ t<?php
                     <li class="nav-item d-flex align-items-center">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $direction ?>php/addProduct.php">¿Quiénes Somos?</a>
+                        <a class="nav-link" href="<?php echo $direction ?>php/addProduct.php">Agregar Producto</a>
                     </li>                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="<?php echo $direction ?>php/natuLove.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
