@@ -107,12 +107,10 @@ $totalPages = ceil($totalProducts / 6); // Calcular el número de páginas
                     <h5 class="card-title">'.$product["name"].'</h5>
                     <p class="card-text">$'.number_format($product["price"], 2).'</p>
                     <div class="mt-auto d-flex justify-content-around">
-                       <button type="submit" class="btn btn-success">Agregar al Carrito</button> <!-- Botón de agregar al carrito -->
-                  </form>
-
-                  <!-- Botón de Más Información -->
-                  <a href="product_detail.php?id='.$product["id"].'" class="btn btn-primary">Más Info</a> <!-- Botón de más info -->
+                       <a href="add_to_cart.php?id='.$product['id'].'" class="btn btn-success">Agregar a Carrito</a>
                     </div>
+                    <!-- Botón de Más Información -->
+                    <a href="product_detail.php?id='.$product["id"].'" class="btn btn-primary mt-2">Más Info</a> <!-- Botón de más info -->
                   </div>
                 </div>
               </div>
@@ -125,7 +123,7 @@ $totalPages = ceil($totalProducts / 6); // Calcular el número de páginas
         <nav>
           <ul class="pagination justify-content-center">
             <li class="page-item <?php if($page == 1) echo 'disabled'; ?>">
-              <a class="page-link" href="?page=<?php echo $page - 1; ?>&category=<?php echo $category; ?>&search=<?php echo $search; ?>" aria-label="Previous">
+              <a class="page-link" href="?page=<?php echo max(1, $page - 1); ?>&category=<?php echo $category; ?>&search=<?php echo $search; ?>" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
@@ -135,7 +133,7 @@ $totalPages = ceil($totalProducts / 6); // Calcular el número de páginas
               </li>
             <?php } ?>
             <li class="page-item <?php if($page == $totalPages) echo 'disabled'; ?>">
-              <a class="page-link" href="?page=<?php echo $page + 1; ?>&category=<?php echo $category; ?>&search=<?php echo $search; ?>" aria-label="Next">
+              <a class="page-link" href="?page=<?php echo min($totalPages, $page + 1); ?>&category=<?php echo $category; ?>&search=<?php echo $search; ?>" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
               </a>
             </li>
