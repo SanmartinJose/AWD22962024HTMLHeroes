@@ -61,7 +61,7 @@
 
                     <!-- Icono y enlace al carrito de compras -->
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <a class="nav-link d-flex align-items-center gap-2" href="cart.php">
                             <i class="bi bi-cart3"></i>
                             <span>Carrito</span>
                         </a>
