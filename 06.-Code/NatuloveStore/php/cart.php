@@ -23,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
+require_once 'Navbar.php';
+
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "El carrito está vacío.";
 } else {
@@ -62,9 +64,8 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
             
             $total += $subtotal;
         } else {
-            echo "<tr>";
-            echo "<td colspan='5'>Producto no encontrado (ID: $productId)</td>";
-            echo "</tr>";
+            // Si el producto no se encuentra, eliminarlo del carrito
+            unset($_SESSION['cart'][$productId]);
         }
     }
     
@@ -73,6 +74,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "</form>";
     echo "<a href='catalog.php'>Volver al catálogo</a>";
     echo "<a href='checkout.php'>Proceder al pago</a>";
+    include 'Footer.php';
 }
 ?>
 
