@@ -1,12 +1,13 @@
 <?php
 session_start();
 require 'db_connection.php'; // Asegúrate de tener una conexión a la base de datos
-$conn = getDatabaseConnection();   
+$conn = getDatabaseConnection();
 
 // Manejar la actualización de cantidades y eliminación de productos
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['update'])) {
+    if (isset($_POST['quantities'])) {
         foreach ($_POST['quantities'] as $productId => $quantity) {
+            $quantity = (int)$quantity;
             if ($quantity == 0) {
                 unset($_SESSION['cart'][$productId]);
             } else {
@@ -54,7 +55,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
             echo "<tr>";
             echo "<td>$name</td>";
             echo "<td>$price</td>";
-            echo "<td><input type='number' name='quantities[$productId]' value='$quantity' min='0' onchange='document.getElementById(\"cartForm\").submit()'></td>";
+            echo "<td><input type='number' name='quantities[$productId]' value='$quantity' min='0' onchange='updateCart()'></td>";
             echo "<td>$subtotal</td>";
             echo "<td><button type='submit' name='remove' value='$productId'>Eliminar</button></td>";
             echo "</tr>";
@@ -74,3 +75,9 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "<a href='checkout.php'>Proceder al pago</a>";
 }
 ?>
+
+<script>
+function updateCart() {
+    document.getElementById('cartForm').submit();
+}
+</script>
