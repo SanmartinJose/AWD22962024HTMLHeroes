@@ -1,5 +1,6 @@
 <?php
 require 'db_connection.php';
+require_once 'Navbar.php'; 
 
 // Obtener el ID del producto desde la URL
 $productId = isset($_GET['id']) ? $_GET['id'] : null;
@@ -67,5 +68,6 @@ if ($productId) {
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <?php include 'Footer.php'; ?>
 </body>
 </html>
