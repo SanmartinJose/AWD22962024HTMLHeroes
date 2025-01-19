@@ -10,8 +10,13 @@ if (isset($_GET['id'])) {
         $_SESSION['cart'] = [];
     }
 
-    // Agregamos el producto al carrito (por ahora solo guardamos el ID)
-    $_SESSION['cart'][] = $productId;
+    // Si el producto ya está en el carrito, aumentamos la cantidad
+    if (isset($_SESSION['cart'][$productId])) {
+        $_SESSION['cart'][$productId]++;
+    } else {
+        // De lo contrario, añadimos el producto al carrito con cantidad 1
+        $_SESSION['cart'][$productId] = 1;
+    }
 
     echo "Producto agregado al carrito. <a href='catalog.php'>Volver al catálogo</a>";
 } else {
