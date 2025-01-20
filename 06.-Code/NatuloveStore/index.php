@@ -12,8 +12,13 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
+<!-- Agregar el SDK de Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js"></script>
 </head>
+
+
+
 
 <body>
 <?php include 'php/Navbar.php'; ?>
@@ -102,10 +107,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <?php include 'php/Footer.php'; ?>
+
+
+  <script>
+  // Configuración de Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyA5DRviI5KZH0gbcpY8HBoEWNvsX7pk1TM",
+    authDomain: "natulove-e0689.firebaseapp.com",
+    projectId: "natulove-e0689",
+    storageBucket: "natulove-e0689.firebasestorage.app",
+    messagingSenderId: "638478282235",
+    appId: "1:638478282235:web:6bdefe048144ec61e8af5e"
+  };
+
+  // Inicializar Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+</script>
 </body>
 </html>
 
 
 <?php
+
 
 

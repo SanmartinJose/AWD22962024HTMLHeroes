@@ -148,5 +148,7 @@ $totalPages = ceil($totalProducts / 6); // Calcular el número de páginas
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <?php include 'Footer.php'; ?>
+ 
+
 </body>
 </html>

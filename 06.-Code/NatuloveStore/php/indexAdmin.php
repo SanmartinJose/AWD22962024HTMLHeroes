@@ -16,7 +16,19 @@
 </head>
 
 <body>
-<?php include 'adminNavbar.php'; ?>
+<?php
+session_start();
+
+// Verifica si el usuario está autenticado y tiene el rol de 'admin'
+if (isset($_SESSION['username']) && $_SESSION['username'] === 'Admin') {
+    // Si el usuario es admin, incluir el menú de admin
+    include 'adminNavbar.php';
+} else {
+    // Si no es admin, incluir el menú normal
+    include 'Navbar.php';
+}
+?>
+
 
 
       <div class="d-flex justify-content-center">
@@ -102,6 +114,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <?php include 'Footer.php'; ?>
+  <!-- En el archivo donde gestionas la autenticación -->
+
 </body>
 </html>
 

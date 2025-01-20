@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $current_page = basename($_SERVER['PHP_SELF']);
     $direction = ($current_page == 'index.php') ? "" : "../";
 ?>
@@ -74,8 +75,14 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="userDropdown" style="min-width: 150px;">
                             <div class="p-3">
-                                <a class="dropdown-item" href="<?php echo $direction ?>php/Register.php">Registrarse</a>
-                                <a class="dropdown-item" href="<?php echo $direction ?>php/Login.php">Iniciar Sesión</a>
+                                <?php if (isset($_SESSION['user_id'])): ?>
+                                    <!-- Si el usuario está logueado, muestra 'Cerrar sesión' -->
+                                    <a class="dropdown-item" href="<?php echo $direction ?>php/logout.php">Cerrar sesión</a>
+                                <?php else: ?>
+                                    <!-- Si el usuario no está logueado, muestra 'Iniciar sesión' y 'Registrarse' -->
+                                    <a class="dropdown-item" href="<?php echo $direction ?>php/Register.php">Registrarse</a>
+                                    <a class="dropdown-item" href="<?php echo $direction ?>php/Login.php">Iniciar Sesión</a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </li>
@@ -92,3 +99,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 </html>
+
