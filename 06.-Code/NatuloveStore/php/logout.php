@@ -1,11 +1,17 @@
 <?php
-session_start();
-session_unset(); // Destruye todas las variables de sesión
-session_destroy(); // Destruye la sesión
 
-// Redirigir al inicio o página deseada sin especificar la dirección completa
-header("Location: ../index.php"); // Para redirigir un nivel atrás
+//logout.php
 
-exit;
+include('config.php');
+
+//Reset OAuth access token
+$google_client->revokeToken();
+
+//Destroy entire session data.
+session_destroy();
+
+//redirect page to index.php
+header('location:../index.php');
+
 ?>
 
