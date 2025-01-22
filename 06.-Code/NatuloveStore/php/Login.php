@@ -6,7 +6,10 @@ function validateInput($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
-session_start();
+// Iniciar la sesión solo si no está iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Manejo del inicio de sesión tradicional
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -101,13 +104,6 @@ if (isset($_GET["code"])) {
                 $_SESSION['username'] = $username;
                 $_SESSION['role'] = $role;
 
-                // Ahora asignamos los valores del usuario a los campos de la página
-                echo "<script>
-                    // Autocompletar los campos de nombre de usuario y contraseña
-                    document.getElementById('username_or_email').value = '$username';
-                    document.getElementById('password').value = '';
-                </script>";
-
                 // Redirigir dependiendo del rol
                 if ($role === 'customer') {
                     header("Location: catalog.php");
@@ -165,10 +161,6 @@ if (!isset($_SESSION['access_token'])) {
 }
 ?>
 
-<!-- El código HTML sigue igual -->
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -196,7 +188,7 @@ if (!isset($_SESSION['access_token'])) {
 
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña:</label>
-                <input type="password" id="password" name="password" class="form-control" value="<?php echo isset($_SESSION['user_email_address']) ? '': ''; ?>" required>
+                <input type="password" id="password" name="password" class="form-control" required>
                 <button type="button" class="btn btn-secondary btn-sm mt-2" onclick="togglePasswordVisibility('password')">Mostrar</button>
             </div>
 
@@ -220,5 +212,4 @@ if (!isset($_SESSION['access_token'])) {
             field.type = field.type === 'password' ? 'text' : 'password';
         }
     </script>
-</body>
-</html>
+</body
