@@ -79,12 +79,10 @@ $totalPages = ceil($totalProducts / 6); // Calcular el número de páginas
       <div class="col-md-3">
         <div class="list-group">
           <h5>Categorías</h5>
+          <a href="?category=Frutos" class="list-group-item list-group-item-action">Frutos</a>
+          <a href="?category=Chocolates" class="list-group-item list-group-item-action">Chocolates</a>
           <a href="?category=Dulce" class="list-group-item list-group-item-action">Dulce</a>
-          <a href="?category=Planta Medicinal" class="list-group-item list-group-item-action">Planta Medicinal</a>
-          <a href="?category=Frutos Secos" class="list-group-item list-group-item-action">Frutos Secos</a>
-          <a href="?category=Detalles" class="list-group-item list-group-item-action">Detalles</a>
-          <a href="?category=Chocolate" class="list-group-item list-group-item-action">Chocolate</a>
-          <a href="?category=Combos" class="list-group-item list-group-item-action">Combos</a>
+          <a href="?category=Flores" class="list-group-item list-group-item-action">Flores</a>
         </div>
         <form method="get" class="mt-3">
           <input type="text" name="search" class="form-control" placeholder="Buscar producto..." value="<?php echo $search; ?>">

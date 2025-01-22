@@ -1,0 +1,24 @@
+body {
+    background-color: #f8f9fa;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+}
+
+.back-button {
+    top: 10px;
+    left: 10px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.back-button svg {
+    vertical-align: middle;
+}
