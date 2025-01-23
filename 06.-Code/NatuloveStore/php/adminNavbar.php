@@ -47,7 +47,10 @@
                         <a class="nav-link" href="<?php echo $direction ?>php/seeInventory.php">MostrarInventario</a>
                     </li>  
 
-               
+                    </li>  
+
+<a class="nav-link" href="<?php echo $direction ?>php/seeAvoices.php">Facturas</a>
+</li>  
                     
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
