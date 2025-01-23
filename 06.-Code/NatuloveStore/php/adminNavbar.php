@@ -40,15 +40,12 @@ t<?php
                         <a class="nav-link" href="<?php echo $direction ?>php/userViewer.php">Usuarios</a>
                     </li>  
                     <li class="nav-item">
-<<<<<<< HEAD
                         <a class="nav-link" href="<?php echo $direction ?>php/editProduct.php">Catalogo</a>
                     </li>  
-=======
                         <a class="nav-link" href="<?php echo $direction ?>php/seeInventory.php">MostrarInventario</a>
                     </li>  
 
 
->>>>>>> 2686a19d7c71cc6b2f49752683289b0586c2a531
                      
                     
                     <li class="nav-item dropdown">
