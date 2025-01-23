@@ -152,7 +152,7 @@ $products = getProducts(getDatabaseConnection(), $category, $search, $page);
 <?php include 'Footer.php'; ?>
 </body>
 </html>
-=======
+
 <?php
 // editProduct.php
 include('db_connection.php');

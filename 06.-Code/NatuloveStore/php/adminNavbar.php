@@ -1,4 +1,4 @@
-t<?php
+<?php
     $current_page = basename($_SERVER['PHP_SELF']);
     if ($current_page == 'index.php') {
         $direction = "";

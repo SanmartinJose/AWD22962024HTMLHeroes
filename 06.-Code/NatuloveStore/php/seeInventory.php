@@ -1,5 +1,5 @@
 <?php
-// seeInventory.php
+
 // seeInventory.php
 include('db_connection.php');
 ?>
