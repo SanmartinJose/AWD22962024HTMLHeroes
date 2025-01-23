@@ -1,6 +1,9 @@
 <?php
 // Ver los comentarios
 include('db_connection.php');
+
+// Establecer conexión a la base de datos
+$conn = getDatabaseConnection();  // Aquí se establece la conexión con la base de datos
 ?>
 
 <!DOCTYPE html>
@@ -37,9 +40,8 @@ include('db_connection.php');
                         <tbody>
                             <?php
                             // Consulta para obtener todos los comentarios
-                            $conn = getDatabaseConnection();
                             $sql = "SELECT * FROM comentary";
-                            $result = $conn->query($sql);
+                            $result = $conn->query($sql);  // Usamos la conexión correctamente aquí
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
                                     echo "<tr>
@@ -54,7 +56,7 @@ include('db_connection.php');
                             } else {
                                 echo "<tr><td colspan='6' class='text-center'>No hay comentarios registrados.</td></tr>";
                             }
-                            $conn->close();
+                            $conn->close();  // Cerramos la conexión después de usarla
                             ?>
                         </tbody>
                     </table>
@@ -83,6 +85,4 @@ include('db_connection.php');
     <script src="../js/validation.js"></script>
 </body>
 </html>
-
-
 

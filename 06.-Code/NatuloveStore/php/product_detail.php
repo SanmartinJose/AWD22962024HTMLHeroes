@@ -7,7 +7,7 @@ $productId = isset($_GET['id']) ? $_GET['id'] : null;
 
 if ($productId) {
     // Función para obtener el producto desde la base de datos
-    function getProductDetails( $connection, $productId) {
+    function getProductDetails($connection, $productId) {
         $sql = "SELECT * FROM Products WHERE id = ?";
         $stmt =  $connection->prepare($sql);
         $stmt->bind_param("s", $productId);
@@ -17,7 +17,7 @@ if ($productId) {
     }
 
     // Función para guardar el comentario y la puntuación
-    function saveCommentary( $connection, $productId, $userId, $rating, $comment) {
+    function saveCommentary($connection, $productId, $userId, $rating, $comment) {
         $sql = "INSERT INTO comentary (product_id, user_id, rating, comment) VALUES (?, ?, ?, ?)";
         $stmt =  $connection->prepare($sql);
         $stmt->bind_param("siis", $productId, $userId, $rating, $comment);
@@ -25,7 +25,7 @@ if ($productId) {
     }
 
     // Función para obtener los comentarios ordenados por puntuación
-    function getComments( $connection, $productId) {
+    function getComments($connection, $productId) {
         $sql = "SELECT * FROM comentary WHERE product_id = ? ORDER BY rating DESC";
         $stmt =  $connection->prepare($sql);
         $stmt->bind_param("s", $productId);
@@ -35,14 +35,14 @@ if ($productId) {
     }
 
     // Función para obtener el promedio de las puntuaciones
-    function getAverageRating( $connection $productId) {
+    function getAverageRating($connection, $productId) {
         $sql = "SELECT AVG(rating) AS avg_rating FROM comentary WHERE product_id = ?";
-        $stmt =  $connection->prepare($sql);
+        $stmt = $connection->prepare($sql);
         $stmt->bind_param("s", $productId);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-        return round($row['avg_rating'], 2);
+        return round($row['avg_rating'], 1); // Redondeamos a un decimal
     }
 
     // Verificar si se envió un comentario
@@ -184,3 +184,4 @@ if ($productId) {
         color: #ffbf00;
     }
 </style>
+
