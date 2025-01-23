@@ -138,3 +138,29 @@ $('#saveChanges').click(function () {
         }
     });
 });
+
+$(document).ready(function() {
+    // Eliminar comentario
+    $(document).on('click', '.deleteBtn', function() {
+        var commentId = $(this).data('id');  // Obtener el ID del comentario
+
+        if (confirm('¿Estás seguro de eliminar este comentario?')) {
+            $.ajax({
+                url: './deleteCommentary.php',  // Archivo PHP que manejará la eliminación
+                type: 'POST',
+                data: { id: commentId },  // Enviar el ID del comentario
+                success: function(response) {
+                    if (response == 'success') {
+                        alert('Comentario eliminado con éxito.');
+                        location.reload();  // Recargar la página después de eliminar el comentario
+                    } else {
+                        alert('Error al eliminar el comentario.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('Hubo un problema al eliminar el comentario: ' + error);
+                }
+            });
+        }
+    });
+});
