@@ -53,7 +53,7 @@ $queryDetails = "SELECT Products.name AS product_name, Details_Sales.amount
 
 if (!$invoiceData['notification_sent']) {
 
-    $token = "EAAYj09m3msMBOyFgKqTnXSscBKSgmoO50jgmZB9vtIq8bPuZAvbdTGFNZAFSVM4P7ZBan9psMbZADbnBD0oSmY01qgILDIqnByp3xSCye8hiyc0JoSZCOCRI17aMx1jhF8PzgxTgBZCwMqNIz5WbGbpmi8ZAFU3aXjKN2M7xYa7oAct1005k0KdN51S9ZBjm7sEKQppP1XmwON0TbYt4ZCaLZAcqByStjYZD";
+    $token = "EAAYj09m3msMBO9w4U9YZCwzssV7Oqiw5ZABocVz2R3tH5wPe7bkprhktqyNfxxZBTWobKZCRWNynpiNZA17W3p84twuiJ9Qu6vUfwBBBru5Hx1jQIW6nKRJueKrZBOLudlOpRatxPQ6Jv3PZCXKe8L9izoJfIZAJ9RH33lEPCraJrGWbzPXFDvg1ZAm248Q3AEiB2rvv4ZBbxJKZBXyJqqIMRBa07YH9aoZD";
     $phone = "593996459938";
     $url = "https://graph.facebook.com/v21.0/530788673453884/messages";
 
@@ -98,7 +98,6 @@ if (!$invoiceData['notification_sent']) {
     curl_close($curl);
 
     if ($status_code == 200) {
-        // Actualizar el estado de la notificación en la base de datos
         $queryUpdateNotification = "UPDATE Avoices SET notification_sent = TRUE WHERE id_avoice = '$idAvoice'";
         mysqli_query($conn, $queryUpdateNotification);
     }

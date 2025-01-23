@@ -57,10 +57,6 @@
                         </div>
                     </li>
 
-                    <!-- Enlace a las ofertas -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $direction ?>php/offersDescription.php">Ofertas</a>
-                    </li>
 
                     <!-- Icono y enlace al carrito de compras -->
                     <li class="nav-item">
