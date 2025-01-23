@@ -11,6 +11,8 @@ function getDatabaseConnection($table = null) {
         die("Error al conectar con la base de datos: " . $connection->connect_error);
     }
 
+    
+
     return $connection;
 }
 ?>
