@@ -39,6 +39,11 @@ t<?php
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo $direction ?>php/addProduct.php">Usuarios</a>
                     </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo $direction ?>php/seeInventory.php">MostrarInventario</a>
+                    </li>  
+
+
                      
                     
                     <li class="nav-item dropdown">
