@@ -120,7 +120,7 @@ $('#saveChanges').click(function () {
 
     // Enviar los datos al servidor
     $.ajax({
-        url: './editProduct.php',
+        url: './editProdut.php',
         type: 'POST',
         data: productData,
         success: function (response) {

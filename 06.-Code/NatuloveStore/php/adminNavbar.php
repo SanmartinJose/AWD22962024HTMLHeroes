@@ -37,16 +37,17 @@ t<?php
                         <a class="nav-link" href="<?php echo $direction ?>php/addProduct.php">Agregar Producto</a>
                     </li>                    
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $direction ?>php/addProduct.php">Usuarios</a>
+                        <a class="nav-link" href="<?php echo $direction ?>php/seeUsers.php">Clientes</a>
                     </li>  
                     <li class="nav-item">
+
                         <a class="nav-link" href="<?php echo $direction ?>php/editProduct.php">Catalogo</a>
                     </li>  
+
                         <a class="nav-link" href="<?php echo $direction ?>php/seeInventory.php">MostrarInventario</a>
                     </li>  
 
-
-                     
+               
                     
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
