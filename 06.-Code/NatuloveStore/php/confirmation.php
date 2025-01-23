@@ -1,24 +1,25 @@
 <?php
 session_start();
-require 'db_connection.php'; // Conexión a la base de datos
+require 'db_connection.php'; 
 $conn = getDatabaseConnection();
 
-// Verificar que el usuario esté autenticado
+
 if (!isset($_SESSION['user_id'])) {
     echo "Debe iniciar sesión para ver esta página.";
     exit;
 }
 
-// Verificar que se reciba el ID de la factura
+
 if (!isset($_GET['invoice'])) {
     echo "No se proporcionó una factura.";
     exit;
 }
+$user_id = $_SESSION['user_id'];
 
 $idAvoice = mysqli_real_escape_string($conn, $_GET['invoice']);
 
-// Obtener los detalles de la factura
-$queryInvoice = "SELECT Avoices.id_avoice, Avoices.issue_date, Avoices.total_amount, users.username 
+
+$queryInvoice = "SELECT Avoices.id_avoice, Avoices.issue_date, Avoices.total_amount, users.username, Avoices.id_client 
                  FROM Avoices 
                  INNER JOIN users ON Avoices.id_client = users.id 
                  WHERE Avoices.id_avoice = '$idAvoice'";
@@ -28,11 +29,17 @@ if (!$resultInvoice || mysqli_num_rows($resultInvoice) === 0) {
     exit;
 }
 
+
+
 $invoiceData = mysqli_fetch_assoc($resultInvoice);
 $clientName = $invoiceData['username'];
 $totalAmount = $invoiceData['total_amount'];
 
-// Obtener los detalles de los productos vendidos
+if ($user_id != $invoiceData['id_client']) {
+    echo "No tienes permisos para ver esta factura.";
+    exit;
+}
+
 $queryDetails = "SELECT Products.name AS product_name, Details_Sales.amount 
                  FROM Details_Sales 
                  INNER JOIN Products ON Details_Sales.id_product = Products.id 
@@ -43,19 +50,22 @@ if (!$resultDetails || mysqli_num_rows($resultDetails) === 0) {
     exit;
 }
 
-// Crear la cadena con los productos vendidos
+
 $productDetails = [];
 while ($row = mysqli_fetch_assoc($resultDetails)) {
     $productDetails[] = "{$row['amount']}x {$row['product_name']}";
 }
 $productDetailsString = implode(", ", $productDetails);
 
-// Enviar mensaje de WhatsApp
-$token = "EAAYj09m3msMBO1g8JIDYQ8oyNAEvUrZCCJPZBqLQarBYFjdbyLWOdZAMTyBOVcXL5zoIFcDYCTsIjnCQl9QQABs2yUbG1HKL0oFrYLIJLssIBXOQZCz8EwfhLQwBWgSchnuG1tByIIY2jCeD3Hfk8CyZA4QQyJEknFivqlvmH2xCmi9MpJI9QEOy4De6jzHZAlZC5K6ENtpuFBCN9NXHMuZB6aF6zFEZD";
+$token = "EAAYj09m3msMBOyFgKqTnXSscBKSgmoO50jgmZB9vtIq8bPuZAvbdTGFNZAFSVM4P7ZBan9psMbZADbnBD0oSmY01qgILDIqnByp3xSCye8hiyc0JoSZCOCRI17aMx1jhF8PzgxTgBZCwMqNIz5WbGbpmi8ZAFU3aXjKN2M7xYa7oAct1005k0KdN51S9ZBjm7sEKQppP1XmwON0TbYt4ZCaLZAcqByStjYZD";
 $phone = "593996459938";
 $url = "https://graph.facebook.com/v21.0/530788673453884/messages";
 
-// Crear el mensaje en formato JSON
+
+$clientName = str_replace(["\n", "\t", "    "], ' ', $clientName);
+$idAvoice = str_replace(["\n", "\t", "    "], ' ', $idAvoice);
+$productDetailsString = str_replace(["\n", "\t", "    "], ' ', $productDetailsString);
+
 $message = json_encode([
     "messaging_product" => "whatsapp",
     "to" => $phone,
@@ -105,7 +115,7 @@ $status_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 curl_close($curl);
 
-// Mostrar confirmación al usuario
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
