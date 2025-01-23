@@ -29,11 +29,7 @@ $conn = getDatabaseConnection();  // Aquí se establece la conexión con la base
             </thead>
             <tbody>
                 <tr>
-                    <td>Productos</td>
-                    <td><button id="downloadProductsBtn" type="submit" name="format" value="pdf" class="btn btn-danger">.pdf</td>
-                    <td><button id="downloadProductsExcelBtn" type="submit" name="format" value="excel" class="btn btn-success">excel</td>
-                    <td><button id="downloadProductsJsonBtn" type="submit" name="format" value="excel" class="btn btn-info">.json</td> </tr>
-                <tr>
+                   <tr>
                     <td>Usuarios</td>
                     <td><button id="downloadUsersBtn" type="submit" name="format" value="pdf" class="btn btn-danger">.pdf</td>
                     <td><button id="downloadUsersExcelBtn" type="submit" name="format" value="excel" class="btn btn-success">excel</td>
