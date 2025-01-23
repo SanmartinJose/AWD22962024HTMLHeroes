@@ -2,7 +2,7 @@ let timeout;
 
 function resetTimer() {
   clearTimeout(timeout);
-  timeout = setTimeout(logout, 60000); // 180000ms = 3 minutos
+  timeout = setTimeout(logout, 60000); // 20000ms = 3 minutos
 }
 
 function logout() {
