@@ -149,4 +149,52 @@ Users
 
 http://localhost:3000/users/25
 
-  
+
+
+View catalog
+http://localhost:3000/products?category=Dulce
+
+
+
+Sum of sales
+http://localhost:3000/sales/2025/03
+
+
+
+Products sum
+http://localhost:3000/details_sales/total/P0020
+
+
+
+Classify comments
+http://localhost:3000/comentaries/rating/4
+
+
+
+Calculate age
+http://localhost:3000/users/age/25
+
+
+
+Classify user
+http://localhost:3000/users/role/admin
+
+
+
+Calculate IVA
+http://localhost:3000/sales/with-tax
+
+
+
+Export to PDF
+http://localhost:3000/export/users
+
+
+
+Classify state
+http://localhost:3000/avoices/status/Pendiente
+
+
+
+Classify inventory
+http://localhost:3000/inventory/user/2
