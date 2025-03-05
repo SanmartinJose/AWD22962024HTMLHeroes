@@ -1,4 +1,5 @@
 import React from 'react';
+import Granola from '../resources/img/granola2.jpg';
 
 const AboutUs = () => {
     return (
@@ -11,7 +12,7 @@ const AboutUs = () => {
                         <h1>Quiénes Somos</h1>
                         <p className="lead">Bienvenidos a NATULOVE, tu tienda de alimentos y decoraciones naturales.</p>
                     </div>
-                    <img src="../img/granola2.jpg" alt="Granola" className="img-fluid" />
+                    <img src={Granola} alt="Granola" className="img-fluid" />
                 </div>
 
                 <div className="row mt-4">
