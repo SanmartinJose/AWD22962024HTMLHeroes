@@ -1,0 +1,26 @@
+/* Ajusta el tamaño del carrusel */
+.carousel {
+    max-width: 60%;  /* Ajusta el tamaño máximo del carrusel al 80% del ancho de su contenedor */
+    margin: 0 auto;  /* Centra el carrusel */
+  }
+  
+  /* Ajusta el tamaño de las imágenes dentro del carrusel */
+  .carousel-inner .carousel-item img {
+    width: 100%;  /* Hace que la imagen ocupe el 100% del ancho del contenedor del carrusel */
+    height: auto;  /* Mantiene la proporción de la imagen */
+    object-fit: cover;  /* Asegura que la imagen se recorte de forma adecuada sin distorsionarse */
+  }
+  
+  /* Opcional: puedes hacer más pequeño el tamaño de las flechas de navegación */
+  .carousel-control-prev-icon, 
+  .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Cambia el color de las flechas */
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Opcional: ajustar las flechas para que estén más cerca del borde */
+  .carousel-control-prev, 
+  .carousel-control-next {
+    width: 5%;  /* Hace que las flechas ocupen un porcentaje menor */
+  }
