@@ -12,6 +12,7 @@ import Cart from './Pages/Cart';
 import Login from './Pages/Login';
 import Logout from './Pages/Logout';
 import AdminDashboard from './Pages/AdminDashboard';
+import Home from './Pages/Home';  // Asegúrate de importar Home
 
 const App = () => {
     return (
@@ -29,7 +30,7 @@ const App = () => {
                                 </PrivateRoute>
                             }
                         />
-                        <Route path="/" element={<Catalog />} />
+                        <Route path="/" element={<Home />} />  {/* Cambiado a Home */}
                         <Route path="/about-us" element={<AboutUs />} />
                         <Route path="/catalog" element={<Catalog />} />
                         <Route path="/cart" element={<Cart />} />
