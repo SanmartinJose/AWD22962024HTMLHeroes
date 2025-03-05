@@ -2,17 +2,13 @@ const express = require('express');
 const connection = require('./db');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
+const bcrypt = require('bcrypt');
 const app = express();
 const PORT = 3000;
 const cors = require('cors');
 
 // Habilitar CORS para todas las rutas
 app.use(cors());
-
-// O habilitar CORS solo para un origen específico
-app.use(cors({
-    origin: 'http://localhost:3001', // Permite solo solicitudes desde este origen
-}));
 
 app.use(express.json());
 /////////// TABLE: Avoices ///////////

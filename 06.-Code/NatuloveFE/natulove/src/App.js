@@ -10,6 +10,7 @@ import AboutUs from './Pages/AboutUs';
 import Catalog from './Pages/Catalog';
 import Cart from './Pages/Cart';
 import Login from './Pages/Login';
+import Register from './Pages/Register';
 import Logout from './Pages/Logout';
 import AdminDashboard from './Pages/AdminDashboard';
 
@@ -35,6 +36,7 @@ const App = () => {
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/logout" element={<Logout />} />
+                        <Route path="/register" element={<Register />} />
                         <Route path="/admin" element={<AdminDashboard />} />
                     </Routes>
                     <Footer />

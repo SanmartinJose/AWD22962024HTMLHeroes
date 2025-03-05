@@ -56,9 +56,15 @@ const Navbar = () => {
                                 </li>
                             </>
                         ) : (
+                            <>
                             <li className="nav-item">
                                 <Link className="btn btn-primary" to="/login">Iniciar Sesión</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="btn btn-success" to="/register">Registrarse</Link>
+                            </li>
+                            </>
+                            
                         )}
                     </ul>
                 </div>
